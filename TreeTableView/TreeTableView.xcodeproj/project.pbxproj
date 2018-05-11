@@ -22,6 +22,7 @@
 		BC0360B120A53C68009CA1E4 /* MYTreeTableView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC0360AC20A53C68009CA1E4 /* MYTreeTableView.bundle */; };
 		BC0360B420A53CB0009CA1E4 /* DemoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0360B320A53CB0009CA1E4 /* DemoTableViewController.m */; };
 		BC0360B620A53DFF009CA1E4 /* Resource.json in Resources */ = {isa = PBXBuildFile; fileRef = BC0360B520A53DFF009CA1E4 /* Resource.json */; };
+		BC0360B920A57BFB009CA1E4 /* MYSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0360B820A57BFB009CA1E4 /* MYSearchBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,8 @@
 		BC0360B220A53CB0009CA1E4 /* DemoTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoTableViewController.h; sourceTree = "<group>"; };
 		BC0360B320A53CB0009CA1E4 /* DemoTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoTableViewController.m; sourceTree = "<group>"; };
 		BC0360B520A53DFF009CA1E4 /* Resource.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Resource.json; sourceTree = "<group>"; };
+		BC0360B720A57BFB009CA1E4 /* MYSearchBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MYSearchBar.h; sourceTree = "<group>"; };
+		BC0360B820A57BFB009CA1E4 /* MYSearchBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MYSearchBar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +170,8 @@
 				BC0360A520A53C68009CA1E4 /* MYTreeTableViewController.m */,
 				BC0360A620A53C68009CA1E4 /* MYTreeTableViewCell.h */,
 				BC0360A820A53C68009CA1E4 /* MYTreeTableViewCell.m */,
+				BC0360B720A57BFB009CA1E4 /* MYSearchBar.h */,
+				BC0360B820A57BFB009CA1E4 /* MYSearchBar.m */,
 			);
 			path = MYTreeTableView;
 			sourceTree = "<group>";
@@ -303,6 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC0360B920A57BFB009CA1E4 /* MYSearchBar.m in Sources */,
 				BC0360B420A53CB0009CA1E4 /* DemoTableViewController.m in Sources */,
 				BC0360AE20A53C68009CA1E4 /* MYTreeTableViewController.m in Sources */,
 				BC0360B020A53C68009CA1E4 /* MYTreeTableManager.m in Sources */,

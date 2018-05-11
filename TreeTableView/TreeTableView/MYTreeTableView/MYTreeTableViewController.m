@@ -9,8 +9,9 @@
 #import "MYTreeTableViewController.h"
 #import "MYTreeTableManager.h"
 #import "MYTreeTableViewCell.h"
+#import "MYSearchBar.h"
 
-@interface MYTreeTableViewController ()
+@interface MYTreeTableViewController () <MYSearchBarDelegate>
 
 @property (nonatomic, strong) MYTreeTableManager *manager;
 @property (nonatomic, strong) UIRefreshControl   *myRefreshControl;
@@ -18,6 +19,7 @@
 @end
 
 @implementation MYTreeTableViewController
+
 
 - (instancetype)init
 {
@@ -28,6 +30,7 @@
         self.isShowArrow      = YES;
         self.isShowCheck      = YES;
         self.isShowLevelColor = NO;
+        self.isShowSearchBar  = YES;
         
         self.normalBackgroundColor = [UIColor whiteColor];
         self.levelColorArray = @[[self getColorWithRed:230 green:230 blue:230],
@@ -39,12 +42,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView.tableFooterView = [[UIView alloc] init];
-    
     self.myRefreshControl = [[UIRefreshControl alloc] init];
     self.myRefreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"下拉刷新"];
     [self.myRefreshControl addTarget:self action:@selector(refreshData) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.myRefreshControl];
+    
+    self.tableView.tableHeaderView = self.isShowSearchBar ? [self getSearchBar] : nil;
+    self.tableView.tableFooterView = [[UIView alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -61,7 +65,7 @@
             self.manager = [self.classDelegate managerInTableViewController:self];
             
             // 遍历外部传来的所选择的 itemId
-            for (NSString *itemId in self.checkItemIds) {
+            for (NSNumber *itemId in self.checkItemIds) {
                 MYTreeItem *item = [self.manager getItemWithItemId:itemId];
                 if (item) {
                     [self.manager checkItem:item isCheck:YES];
@@ -129,7 +133,33 @@
     
     MYTreeTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     [cell updateItem];
+}
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [(MYSearchBar *)self.tableView.tableHeaderView resignFirstResponder];
+}
+
+
+#pragma mark - MYSearchTextFieldDelegate
+
+/** 点击 search 键 */
+- (void)searchBarShouldReturn:(MYSearchBar *)searchBar {
+    
+}
+
+/** 点击清除数据键 */
+- (void)searchBarShouldClear:(MYSearchBar *)searchBar {
+    
+}
+
+/** 实时查询搜索框中的文字 */
+- (void)searchBarEditingChanged:(MYSearchBar *)searchBar {
+    
+}
+
+/** 监控点击搜索框，埋点用 */
+- (void)searchBarShouldBeginEditing:(MYSearchBar *)searchBar {
+    
 }
 
 
@@ -147,6 +177,14 @@
 
 - (UIColor *)getColorWithRed:(NSInteger)redNum green:(NSInteger)greenNum blue:(NSInteger)blueNum {
     return [UIColor colorWithRed:redNum/255.0 green:greenNum/255.0 blue:blueNum/255.0 alpha:1.0];
+}
+
+- (MYSearchBar *)getSearchBar {
+    
+    MYSearchBar *searchBar = [[MYSearchBar alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 40)];
+    searchBar.delegate = self;
+
+    return searchBar;
 }
 
 

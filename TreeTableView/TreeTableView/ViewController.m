@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UISwitch *isShowArrowSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *isShowCheckSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *isShowLevelColorSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *isShowSearchBarSwitch;
+
 
 @property (weak, nonatomic) IBOutlet UILabel  *showLabel;
 
@@ -35,6 +37,7 @@
     vc.isShowArrow      = self.isShowArrowSwitch.isOn;
     vc.isShowCheck      = self.isShowCheckSwitch.isOn;
     vc.isShowLevelColor = self.isShowLevelColorSwitch.isOn;
+    vc.isShowSearchBar  = self.isShowSearchBarSwitch.isOn;
     vc.checkItemIds     = [self getItemIds];
     
     [self.navigationController pushViewController:vc animated:YES];

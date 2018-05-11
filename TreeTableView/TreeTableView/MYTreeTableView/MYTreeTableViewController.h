@@ -22,7 +22,6 @@
 
 @end
 
-
 // 上一页面中实现的 delegate
 @protocol MYTreeTableViewControllerDelegate <NSObject>
 
@@ -40,6 +39,7 @@
 @property (nonatomic, assign) BOOL isShowArrow;       // 是否显示文字前方的箭头图片，默认为 YES
 @property (nonatomic, assign) BOOL isShowCheck;       // 是否显示文字后方的勾选框，默认为 YES
 @property (nonatomic, assign) BOOL isShowLevelColor;  // 是否展示层级颜色，从 0 级开始排序，默认为 NO
+@property (nonatomic, assign) BOOL isShowSearchBar;   // 是否有搜索框，默认为 YES
 
 @property (nonatomic, strong) NSArray <NSString *>*checkItemIds;    // 从外部传进来的所选择的 itemIds
 @property (nonatomic, strong) NSArray <UIColor *>*levelColorArray;  // 层级颜色，默认一级和二级分别为深灰色和浅灰色

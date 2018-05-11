@@ -55,7 +55,11 @@
                                                        data:data];
         [items addObject:item];
     }
-    return [[MYTreeTableManager alloc] initWithItems:items andExpandLevel:0];
+    
+    // ExpandLevel 为 0 全部折叠，为 1 展开一级，以此类推，为 NSIntegerMax 全部展开
+    MYTreeTableManager *manager = [[MYTreeTableManager alloc] initWithItems:items andExpandLevel:0];
+    
+    return manager;
 }
 
 - (void)tableViewController:(MYTreeTableViewController *)tableViewController checkItems:(NSArray<MYTreeItem *> *)items {
