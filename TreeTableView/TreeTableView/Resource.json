@@ -1,0 +1,722 @@
+[
+  {
+    "craft_type" : "Craft",
+    "id" : 1,
+    "level_code" : "1",
+    "name" : "建筑工程工艺库划分",
+    "order_no" : 1,
+    "pid" : null,
+    "type" : "Library"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 2,
+    "level_code" : "1.1",
+    "name" : "地基与基础",
+    "order_no" : 1,
+    "pid" : 1,
+    "type" : "Section"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 3,
+    "level_code" : "1.2",
+    "name" : "主体结构",
+    "order_no" : 2,
+    "pid" : 1,
+    "type" : "Section"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 4,
+    "level_code" : "1.4",
+    "name" : "建筑装饰装修",
+    "order_no" : 4,
+    "pid" : 1,
+    "type" : "Section"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 5,
+    "level_code" : "1.5",
+    "name" : "屋面工程",
+    "order_no" : 5,
+    "pid" : 1,
+    "type" : "Section"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 6,
+    "level_code" : "1.6",
+    "name" : "建筑给水排水及采暖",
+    "order_no" : 6,
+    "pid" : 1,
+    "type" : "Section"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 7,
+    "level_code" : "1.7",
+    "name" : "通风与空调",
+    "order_no" : 7,
+    "pid" : 1,
+    "type" : "Section"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 8,
+    "level_code" : "1.8",
+    "name" : "建筑电气",
+    "order_no" : 8,
+    "pid" : 1,
+    "type" : "Section"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 9,
+    "level_code" : "1.9",
+    "name" : "建筑智能化",
+    "order_no" : 9,
+    "pid" : 1,
+    "type" : "Section"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 10,
+    "level_code" : "1.10",
+    "name" : "建筑节能",
+    "order_no" : 10,
+    "pid" : 1,
+    "type" : "Section"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 11,
+    "level_code" : "1.3",
+    "name" : "电梯",
+    "order_no" : 3,
+    "pid" : 1,
+    "type" : "Section"
+  },
+  {
+    "craft_type" : "PreFabriTrack",
+    "id" : 12,
+    "level_code" : "11",
+    "name" : "构件跟踪",
+    "order_no" : 11,
+    "pid" : null,
+    "type" : "Track"
+  },
+  {
+    "craft_type" : "PileFoundTrack",
+    "id" : 13,
+    "level_code" : "12",
+    "name" : "桩基跟踪",
+    "order_no" : 12,
+    "pid" : null,
+    "type" : "Track"
+  },
+  {
+    "craft_type" : "SteelStrucTrack",
+    "id" : 14,
+    "level_code" : "13",
+    "name" : "钢构跟踪",
+    "order_no" : 13,
+    "pid" : null,
+    "type" : "Track"
+  },
+  {
+    "craft_type" : "CustomTrack",
+    "id" : 15,
+    "level_code" : "14",
+    "name" : "自定义跟踪",
+    "order_no" : 14,
+    "pid" : null,
+    "type" : "Track"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 8930070521679416000,
+    "level_code" : "1.1.1",
+    "name" : "新建子分部",
+    "order_no" : 1,
+    "pid" : 2,
+    "type" : "SubSection"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 13043525276202030000,
+    "level_code" : "1.1.1.1",
+    "name" : "新建分项",
+    "order_no" : 1,
+    "pid" : 8930070521679416000,
+    "type" : "Item"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 5911179913135233000,
+    "level_code" : "1.1.1.1.1",
+    "name" : "新建子分项",
+    "order_no" : 1,
+    "pid" : 13043525276202030000,
+    "type" : "SubItem"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 7428771283791636000,
+    "level_code" : "1.1.1.1.1.1",
+    "name" : "新建工艺",
+    "order_no" : 1,
+    "pid" : 5911179913135233000,
+    "type" : "Craft"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 15096137645579772000,
+    "level_code" : "1.1.1.1.1.1.1",
+    "name" : "新建阶段1",
+    "order_no" : 1,
+    "pid" : 7428771283791636000,
+    "type" : "Stage"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 14802834470147800000,
+    "level_code" : "1.1.1.1.1.1.1.1",
+    "name" : "新建工序1",
+    "order_no" : 1,
+    "pid" : 15096137645579772000,
+    "type" : "Procedure"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 2629079052595446000,
+    "level_code" : "1.1.1.1.1.1.1.1.1",
+    "name" : "新建管控点",
+    "order_no" : 1,
+    "pid" : 14802834470147800000,
+    "type" : "ControlPoint"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 127163901364009490,
+    "level_code" : "1.1.1.1.1.1.1.2",
+    "name" : "新建工序2",
+    "order_no" : 2,
+    "pid" : 15096137645579772000,
+    "type" : "Procedure"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 16219800868735904000,
+    "level_code" : "1.1.1.1.1.1.1.3",
+    "name" : "新建工序3",
+    "order_no" : 3,
+    "pid" : 15096137645579772000,
+    "type" : "Procedure"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 6603249141926780000,
+    "level_code" : "1.1.1.1.1.1.1.4",
+    "name" : "新建工序4",
+    "order_no" : 4,
+    "pid" : 15096137645579772000,
+    "type" : "Procedure"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 14441952358024176000,
+    "level_code" : "1.1.1.1.1.1.1.5",
+    "name" : "新建工序5",
+    "order_no" : 5,
+    "pid" : 15096137645579772000,
+    "type" : "Procedure"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 3809844193151415000,
+    "level_code" : "1.1.1.1.1.1.1.1.2",
+    "name" : "新建管控点1",
+    "order_no" : 2,
+    "pid" : 14802834470147800000,
+    "type" : "ControlPoint"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 9935366539588202000,
+    "level_code" : "1.1.1.1.1.1.1.1.3",
+    "name" : "新建管控点2",
+    "order_no" : 3,
+    "pid" : 14802834470147800000,
+    "type" : "ControlPoint"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 3447492011915582000,
+    "level_code" : "1.1.1.1.1.1.2",
+    "name" : "新建阶段2",
+    "order_no" : 2,
+    "pid" : 7428771283791636000,
+    "type" : "Stage"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 7195643126515140000,
+    "level_code" : "1.1.1.1.1.2",
+    "name" : "新建工艺-1",
+    "order_no" : 2,
+    "pid" : 5911179913135233000,
+    "type" : "Craft"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 5533134074716723000,
+    "level_code" : "1.1.1.1.1.2.1",
+    "name" : "新建阶段1",
+    "order_no" : 1,
+    "pid" : 7195643126515140000,
+    "type" : "Stage"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 15909571466104009000,
+    "level_code" : "1.1.1.1.1.2.1.3",
+    "name" : "新建工序3",
+    "order_no" : 3,
+    "pid" : 5533134074716723000,
+    "type" : "Procedure"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 12298596175178858000,
+    "level_code" : "1.1.1.1.1.2.1.4",
+    "name" : "新建工序4",
+    "order_no" : 4,
+    "pid" : 5533134074716723000,
+    "type" : "Procedure"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 8633774417414137000,
+    "level_code" : "1.1.1.1.1.2.1.5",
+    "name" : "新建工序5",
+    "order_no" : 5,
+    "pid" : 5533134074716723000,
+    "type" : "Procedure"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 7391413486169836000,
+    "level_code" : "1.1.1.1.1.2.1.1",
+    "name" : "新建工序1",
+    "order_no" : 1,
+    "pid" : 5533134074716723000,
+    "type" : "Procedure"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 2852661375984101400,
+    "level_code" : "1.1.1.1.1.2.1.1.2",
+    "name" : "新建管控点1",
+    "order_no" : 2,
+    "pid" : 7391413486169836000,
+    "type" : "ControlPoint"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 6144587790413653000,
+    "level_code" : "1.1.1.1.1.2.1.1.3",
+    "name" : "新建管控点2",
+    "order_no" : 3,
+    "pid" : 7391413486169836000,
+    "type" : "ControlPoint"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 11797732072820283000,
+    "level_code" : "1.1.1.1.1.2.1.1.1",
+    "name" : "新建管控点",
+    "order_no" : 1,
+    "pid" : 7391413486169836000,
+    "type" : "ControlPoint"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 4078999509209445400,
+    "level_code" : "1.1.1.1.1.2.1.2",
+    "name" : "新建工序2",
+    "order_no" : 2,
+    "pid" : 5533134074716723000,
+    "type" : "Procedure"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 10446861535231468000,
+    "level_code" : "1.1.1.1.1.2.2",
+    "name" : "新建阶段2",
+    "order_no" : 2,
+    "pid" : 7195643126515140000,
+    "type" : "Stage"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 5070966772836135000,
+    "level_code" : "1.3.1",
+    "name" : "新建工艺",
+    "order_no" : 1,
+    "pid" : 11,
+    "type" : "Craft"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 1330597675205411800,
+    "level_code" : "1.3.1.1",
+    "name" : "新建工序",
+    "order_no" : 1,
+    "pid" : 5070966772836135000,
+    "type" : "Procedure"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 8736418193409260000,
+    "level_code" : "1.3.1.1.1",
+    "name" : "新建管控点",
+    "order_no" : 1,
+    "pid" : 1330597675205411800,
+    "type" : "ControlPoint"
+  },
+  {
+    "craft_type" : "PreFabriTrack",
+    "id" : 9421407246814430000,
+    "level_code" : "11.1",
+    "name" : "新建跟踪事项",
+    "order_no" : 1,
+    "pid" : 12,
+    "type" : "TrackItem"
+  },
+  {
+    "craft_type" : "PreFabriTrack",
+    "id" : 8117399858849656000,
+    "level_code" : "11.1.1",
+    "name" : "新建阶段",
+    "order_no" : 1,
+    "pid" : 9421407246814430000,
+    "type" : "Stage"
+  },
+  {
+    "craft_type" : "PreFabriTrack",
+    "id" : 5324854828853410000,
+    "level_code" : "11.1.1.1",
+    "name" : "新建工序",
+    "order_no" : 1,
+    "pid" : 8117399858849656000,
+    "type" : "Procedure"
+  },
+  {
+    "craft_type" : "PreFabriTrack",
+    "id" : 4242091238229174300,
+    "level_code" : "11.1.1.1.1",
+    "name" : "新建管控点",
+    "order_no" : 1,
+    "pid" : 5324854828853410000,
+    "type" : "ControlPoint"
+  },
+  {
+    "craft_type" : "PreFabriTrack",
+    "id" : 4206742015815055000,
+    "level_code" : "11.2",
+    "name" : "新建跟踪事项-1",
+    "order_no" : 2,
+    "pid" : 12,
+    "type" : "TrackItem"
+  },
+  {
+    "craft_type" : "PreFabriTrack",
+    "id" : 11070242867345005000,
+    "level_code" : "11.2.1",
+    "name" : "新建阶段",
+    "order_no" : 1,
+    "pid" : 4206742015815055000,
+    "type" : "Stage"
+  },
+  {
+    "craft_type" : "PreFabriTrack",
+    "id" : 1556450462962470100,
+    "level_code" : "11.2.1.1",
+    "name" : "新建工序",
+    "order_no" : 1,
+    "pid" : 11070242867345005000,
+    "type" : "Procedure"
+  },
+  {
+    "craft_type" : "PreFabriTrack",
+    "id" : 18203646867825017000,
+    "level_code" : "11.2.1.1.1",
+    "name" : "新建管控点",
+    "order_no" : 1,
+    "pid" : 1556450462962470100,
+    "type" : "ControlPoint"
+  },
+  {
+    "craft_type" : "PileFoundTrack",
+    "id" : 13053938404777340000,
+    "level_code" : "12.1",
+    "name" : "新建跟踪事项",
+    "order_no" : 1,
+    "pid" : 13,
+    "type" : "TrackItem"
+  },
+  {
+    "craft_type" : "PileFoundTrack",
+    "id" : 1724152743208097300,
+    "level_code" : "12.1.1",
+    "name" : "新建阶段",
+    "order_no" : 1,
+    "pid" : 13053938404777340000,
+    "type" : "Stage"
+  },
+  {
+    "craft_type" : "PileFoundTrack",
+    "id" : 99948248529130000,
+    "level_code" : "12.1.1.1",
+    "name" : "新建工序",
+    "order_no" : 1,
+    "pid" : 1724152743208097300,
+    "type" : "Procedure"
+  },
+  {
+    "craft_type" : "PileFoundTrack",
+    "id" : 12674907578166495000,
+    "level_code" : "12.1.1.1.1",
+    "name" : "新建管控点",
+    "order_no" : 1,
+    "pid" : 99948248529130000,
+    "type" : "ControlPoint"
+  },
+  {
+    "craft_type" : "SteelStrucTrack",
+    "id" : 8449076127759043000,
+    "level_code" : "13.1",
+    "name" : "新建跟踪事项",
+    "order_no" : 1,
+    "pid" : 14,
+    "type" : "TrackItem"
+  },
+  {
+    "craft_type" : "SteelStrucTrack",
+    "id" : 14688734418329924000,
+    "level_code" : "13.1.1",
+    "name" : "新建工序",
+    "order_no" : 1,
+    "pid" : 8449076127759043000,
+    "type" : "Procedure"
+  },
+  {
+    "craft_type" : "SteelStrucTrack",
+    "id" : 15708160139539603000,
+    "level_code" : "13.1.1.1",
+    "name" : "新建管控点",
+    "order_no" : 1,
+    "pid" : 14688734418329924000,
+    "type" : "ControlPoint"
+  },
+  {
+    "craft_type" : "CustomTrack",
+    "id" : 14754112562373044000,
+    "level_code" : "14.1",
+    "name" : "新建跟踪事项",
+    "order_no" : 1,
+    "pid" : 15,
+    "type" : "TrackItem"
+  },
+  {
+    "craft_type" : "CustomTrack",
+    "id" : 8205979663402937000,
+    "level_code" : "14.1.1",
+    "name" : "新建阶段1",
+    "order_no" : 1,
+    "pid" : 14754112562373044000,
+    "type" : "Stage"
+  },
+  {
+    "craft_type" : "CustomTrack",
+    "id" : 6287109620966622000,
+    "level_code" : "14.1.1.1",
+    "name" : "新建工序",
+    "order_no" : 1,
+    "pid" : 8205979663402937000,
+    "type" : "Procedure"
+  },
+  {
+    "craft_type" : "CustomTrack",
+    "id" : 10828040662548503000,
+    "level_code" : "14.1.1.1.1",
+    "name" : "新建管控点",
+    "order_no" : 1,
+    "pid" : 6287109620966622000,
+    "type" : "ControlPoint"
+  },
+  {
+    "craft_type" : "CustomTrack",
+    "id" : 15803404335340968000,
+    "level_code" : "14.1.2",
+    "name" : "新建阶段2",
+    "order_no" : 2,
+    "pid" : 14754112562373044000,
+    "type" : "Stage"
+  },
+  {
+    "craft_type" : "CustomTrack",
+    "id" : 4569735702866955000,
+    "level_code" : "14.1.3",
+    "name" : "新建阶段3",
+    "order_no" : 3,
+    "pid" : 14754112562373044000,
+    "type" : "Stage"
+  },
+  {
+    "craft_type" : "CustomTrack",
+    "id" : 10422716374620535000,
+    "level_code" : "14.1.2.1",
+    "name" : "新建工序",
+    "order_no" : 1,
+    "pid" : 15803404335340968000,
+    "type" : "Procedure"
+  },
+  {
+    "craft_type" : "CustomTrack",
+    "id" : 511029715494003300,
+    "level_code" : "14.1.2.1.1",
+    "name" : "新建管控点",
+    "order_no" : 1,
+    "pid" : 10422716374620535000,
+    "type" : "ControlPoint"
+  },
+  {
+    "craft_type" : "CustomTrack",
+    "id" : 11139268008275556000,
+    "level_code" : "14.1.2.1.2",
+    "name" : "新建管控点",
+    "order_no" : 2,
+    "pid" : 10422716374620535000,
+    "type" : "ControlPoint"
+  },
+  {
+    "craft_type" : "CustomTrack",
+    "id" : 14569028018869380000,
+    "level_code" : "14.1.3.1",
+    "name" : "新建工序",
+    "order_no" : 1,
+    "pid" : 4569735702866955000,
+    "type" : "Procedure"
+  },
+  {
+    "craft_type" : "CustomTrack",
+    "id" : 8388918471751702000,
+    "level_code" : "14.1.3.1.1",
+    "name" : "新建管控点",
+    "order_no" : 1,
+    "pid" : 14569028018869380000,
+    "type" : "ControlPoint"
+  },
+  {
+    "craft_type" : "CustomTrack",
+    "id" : 1718702739431934500,
+    "level_code" : "14.1.3.1.2",
+    "name" : "新建管控点",
+    "order_no" : 2,
+    "pid" : 14569028018869380000,
+    "type" : "ControlPoint"
+  },
+  {
+    "craft_type" : "CustomTrack",
+    "id" : 5270753036425329000,
+    "level_code" : "14.1.3.1.3",
+    "name" : "新建管控点",
+    "order_no" : 3,
+    "pid" : 14569028018869380000,
+    "type" : "ControlPoint"
+  },
+  {
+    "craft_type" : "SteelStrucTrack",
+    "id" : 4830821710968326000,
+    "level_code" : "13.2",
+    "name" : "新建跟踪事项-2",
+    "order_no" : 2,
+    "pid" : 14,
+    "type" : "TrackItem"
+  },
+  {
+    "craft_type" : "SteelStrucTrack",
+    "id" : 1236098030888860400,
+    "level_code" : "13.2.1",
+    "name" : "新建工序",
+    "order_no" : 1,
+    "pid" : 4830821710968326000,
+    "type" : "Procedure"
+  },
+  {
+    "craft_type" : "SteelStrucTrack",
+    "id" : 6947105844864040000,
+    "level_code" : "13.2.1.1",
+    "name" : "新建管控点",
+    "order_no" : 1,
+    "pid" : 1236098030888860400,
+    "type" : "ControlPoint"
+  },
+  {
+    "craft_type" : "SteelStrucTrack",
+    "id" : 5691028641360424000,
+    "level_code" : "13.3",
+    "name" : "新建跟踪事项-2-1",
+    "order_no" : 3,
+    "pid" : 14,
+    "type" : "TrackItem"
+  },
+  {
+    "craft_type" : "SteelStrucTrack",
+    "id" : 2717180442787190300,
+    "level_code" : "13.3.1",
+    "name" : "新建工序",
+    "order_no" : 1,
+    "pid" : 5691028641360424000,
+    "type" : "Procedure"
+  },
+  {
+    "craft_type" : "SteelStrucTrack",
+    "id" : 17040865752675710000,
+    "level_code" : "13.3.1.1",
+    "name" : "新建管控点",
+    "order_no" : 1,
+    "pid" : 2717180442787190300,
+    "type" : "ControlPoint"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 16517896122867836,
+    "level_code" : "1.6.1",
+    "name" : "新建工艺",
+    "order_no" : 1,
+    "pid" : 6,
+    "type" : "Craft"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 12189760205432095000,
+    "level_code" : "1.6.1.1",
+    "name" : "新建工序",
+    "order_no" : 1,
+    "pid" : 16517896122867836,
+    "type" : "Procedure"
+  },
+  {
+    "craft_type" : "Craft",
+    "id" : 9533513791987104000,
+    "level_code" : "1.6.1.1.1",
+    "name" : "新建管控点",
+    "order_no" : 1,
+    "pid" : 12189760205432095000,
+    "type" : "ControlPoint"
+  }
+]
