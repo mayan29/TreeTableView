@@ -20,7 +20,8 @@
     // 创建 提交 和 全选 按钮
     UIBarButtonItem *commitItem = [[UIBarButtonItem alloc] initWithTitle:@"提交" style:UIBarButtonItemStylePlain target:self action:@selector(commitItemClick)];
     UIBarButtonItem *allCheckItem = [[UIBarButtonItem alloc] initWithTitle:@"全选" style:UIBarButtonItemStylePlain target:self action:@selector(allCheckItemClick)];
-    self.navigationItem.rightBarButtonItems = @[commitItem, allCheckItem];
+    UIBarButtonItem *allExpandItem = [[UIBarButtonItem alloc] initWithTitle:@"全部展开" style:UIBarButtonItemStylePlain target:self action:@selector(allExpandItemClick)];
+    self.navigationItem.rightBarButtonItems = @[commitItem, allCheckItem, allExpandItem];
     
     
     self.classDelegate = self;
@@ -36,11 +37,17 @@
     [self checkAllItem:YES];
 }
 
+// 点击右上角 全部展开
+- (void)allExpandItemClick {
+    [self expandAllItem:YES];
+}
+
 
 #pragma mark - MYTreeTableViewControllerParentClassDelegate
 
 - (MYTreeTableManager *)managerInTableViewController:(MYTreeTableViewController *)tableViewController {
     
+    // 获取数据并创建树形结构
     NSData *JSONData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Resource" ofType:@"json"]];
     NSArray *dataArray = [NSJSONSerialization JSONObjectWithData:JSONData options:NSJSONReadingAllowFragments error:nil];
     

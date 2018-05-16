@@ -31,6 +31,7 @@
         self.isShowCheck      = YES;
         self.isShowLevelColor = NO;
         self.isShowSearchBar  = YES;
+        self.isRealTimeSearch = YES;
         
         self.normalBackgroundColor = [UIColor whiteColor];
         self.levelColorArray = @[[self getColorWithRed:230 green:230 blue:230],
@@ -119,20 +120,10 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-        
+    
     MYTreeItem *item = self.manager.showItems[indexPath.row];
     
-    NSInteger updateNum = [self.manager expandItem:item];
-    NSArray *updateIndexPaths = [self getUpdateIndexPathsWithCurrentIndexPath:indexPath andUpdateNum:updateNum];
-    
-    if (item.isExpand) {
-        [tableView insertRowsAtIndexPaths:updateIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
-    } else {
-        [tableView deleteRowsAtIndexPaths:updateIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
-    }
-    
-    MYTreeTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    [cell updateItem];
+    [self tableView:tableView didSelectItems:@[item] isExpand:!item.isExpand];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -154,6 +145,9 @@
 
 /** 实时查询搜索框中的文字 */
 - (void)searchBarEditingChanged:(MYSearchBar *)searchBar {
+    
+    NSString *text = searchBar.text;
+    
     
 }
 
@@ -187,12 +181,58 @@
     return searchBar;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectItems:(NSArray <MYTreeItem *>*)items isExpand:(BOOL)isExpand {
+    
+    NSMutableArray *updateIndexPaths = [NSMutableArray array];
+    
+    for (MYTreeItem *item in items) {
+        
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self.manager.showItems indexOfObject:item] inSection:0];
+        
+        NSInteger updateNum = [self.manager expandItem:item];
+        NSArray *tmp = [self getUpdateIndexPathsWithCurrentIndexPath:indexPath andUpdateNum:updateNum];
+        
+        [updateIndexPaths addObjectsFromArray:tmp];
+        
+        MYTreeTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        [cell updateItem];
+    }
+    
+    if (isExpand) {
+        [tableView insertRowsAtIndexPaths:updateIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+    } else {
+        [tableView deleteRowsAtIndexPaths:updateIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+}
+
 
 #pragma mark - Public Method
 
+// 全部勾选/全部取消勾选
 - (void)checkAllItem:(BOOL)isCheck {
     [self.manager checkAllItem:isCheck];
     [self.tableView reloadData];
+}
+
+// 全部展开/全部折叠 
+- (void)expandAllItem:(BOOL)isExpand {
+    [self expandItemWithLevel:(isExpand ? NSIntegerMax : 0)];
+}
+
+// 展开/折叠到多少层级
+- (void)expandItemWithLevel:(NSInteger)expandLevel {
+    
+    __weak typeof(self)wself = self;
+    
+    [self.manager expandItemWithLevel:expandLevel completed:^(NSArray *noExpandArray) {
+        
+        [wself tableView:wself.tableView didSelectItems:noExpandArray isExpand:NO];
+
+    } andCompleted:^(NSArray *expandArray) {
+        
+        [wself tableView:wself.tableView didSelectItems:expandArray isExpand:YES];
+        
+    }];
 }
 
 - (void)prepareCommit {

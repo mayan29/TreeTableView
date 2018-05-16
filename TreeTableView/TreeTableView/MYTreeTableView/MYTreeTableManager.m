@@ -12,6 +12,7 @@
 @interface MYTreeTableManager ()
 
 @property (nonatomic, strong) NSDictionary *itemsMap;
+@property (nonatomic, assign) NSInteger maxLevel;  // 获取最大等级
 
 @end
 
@@ -59,6 +60,9 @@
                 p = p.parentItem;
             }
             item.level = tmpLevel;
+            
+            // 设置最大等级
+            _maxLevel = MAX(_maxLevel, tmpLevel);
         }
         
         // 4. 根据展开等级设置 showItems
@@ -150,9 +154,45 @@
     }
 }
 
-/** 全部展开/全部折叠 */
-- (void)expandAllItem:(BOOL)isExpand {
+// 展开/折叠到多少层级
+- (void)expandItemWithLevel:(NSInteger)expandLevel completed:(void (^)(NSArray *))noExpandCompleted andCompleted:(void (^)(NSArray *))expandCompleted {
     
+    expandLevel = MAX(expandLevel, 0);
+    expandLevel = MIN(expandLevel, self.maxLevel);
+    
+    // 先一级一级折叠
+    for (NSInteger level = self.maxLevel; level >= expandLevel; level--) {
+        
+        NSMutableArray *itemArray = [NSMutableArray array];
+        for (NSInteger i = 0; i < self.showItems.count; i++) {
+            
+            MYTreeItem *item = self.showItems[i];
+            if (item.isExpand && item.level == level) {
+                [itemArray addObject:item];
+            }
+        }
+        
+        if (noExpandCompleted) {
+            noExpandCompleted(itemArray);
+        }
+    }
+    
+    // 再一级一级展开
+    for (NSInteger level = 0; level < expandLevel; level++) {
+        
+        NSMutableArray *itemArray = [NSMutableArray array];
+        for (NSInteger i = 0; i < self.showItems.count; i++) {
+            
+            MYTreeItem *item = self.showItems[i];
+            if (!item.isExpand && item.level == level) {
+                [itemArray addObject:item];
+            }
+        }
+        
+        if (expandCompleted) {
+            expandCompleted(itemArray);
+        }
+    }
 }
 
 

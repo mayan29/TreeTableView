@@ -15,15 +15,14 @@
 /** 获取可见的节点 */
 @property (nonatomic, readonly, strong) NSMutableArray<MYTreeItem *> *showItems;
 
-
 /** 初始化，ExpandLevel 为 0 全部折叠，为 1 展开一级，以此类推，为 NSIntegerMax 全部展开 */
 - (instancetype)initWithItems:(NSArray<MYTreeItem *> *)items andExpandLevel:(NSInteger)level;
 
 /** 展开/收起 Item，返回所改变的 Item 的个数 */
 - (NSInteger)expandItem:(MYTreeItem *)item;
 - (NSInteger)expandItem:(MYTreeItem *)item isExpand:(BOOL)isExpand;
-/** 全部展开/全部折叠 */
-- (void)expandAllItem:(BOOL)isExpand;
+/** 展开/折叠到多少层级 */
+- (void)expandItemWithLevel:(NSInteger)expandLevel completed:(void(^)(NSArray *noExpandArray))noExpandCompleted andCompleted:(void(^)(NSArray *expandArray))expandCompleted;
 
 /** 勾选/取消勾选 Item */
 - (void)checkItem:(MYTreeItem *)item;

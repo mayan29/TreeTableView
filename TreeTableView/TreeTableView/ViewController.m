@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UISwitch *isShowCheckSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *isShowLevelColorSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *isShowSearchBarSwitch;
-
+@property (weak, nonatomic) IBOutlet UISwitch *isRealTimeSearchSwitch;
 
 @property (weak, nonatomic) IBOutlet UILabel  *showLabel;
 
