@@ -32,6 +32,9 @@
 /** 获取所有已经勾选的 Item */
 - (NSArray <MYTreeItem *>*)getAllCheckItem;
 
+/** 筛选 */
+- (void)filterField:(NSString *)field;
+
 /** 根据 id 获取 item */
 - (MYTreeItem *)getItemWithItemId:(NSNumber *)itemId;
 

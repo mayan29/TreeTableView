@@ -12,7 +12,10 @@
 @interface MYTreeTableManager ()
 
 @property (nonatomic, strong) NSDictionary *itemsMap;
-@property (nonatomic, assign) NSInteger maxLevel;  // 获取最大等级
+@property (nonatomic, strong) NSMutableArray <MYTreeItem *>*topItems;
+@property (nonatomic, strong) NSMutableArray <MYTreeItem *>*tmpItems;
+@property (nonatomic, assign) NSInteger maxLevel;   // 获取最大等级
+@property (nonatomic, assign) NSInteger showLevel;  // 设置最大的等级
 
 @end
 
@@ -27,54 +30,87 @@
     if (self) {
         
         // 1. 建立 map
-        NSMutableDictionary *itemsMap = [NSMutableDictionary dictionary];
-        for (MYTreeItem *item in items) {
-            [itemsMap setObject:item forKey:item.id];
-        }
-        self.itemsMap = itemsMap;
+        [self setupItemsMapWithItems:items];
         
         // 2. 建立父子关系，并得到顶级节点
-        NSMutableArray *topItems = [NSMutableArray array];
-        for (MYTreeItem *item in items) {
-            if ([item.parentId isKindOfClass:[NSNumber class]]) {
-                MYTreeItem *parent = itemsMap[item.parentId];
-                if (parent) {
-                    item.parentItem = parent;
-                    [parent.childItems addObject:item];
-                }
-            }
-            if (!item.parentItem) {
-                [topItems addObject:item];
-            }
-        }
-        topItems = [topItems sortedArrayUsingComparator:^NSComparisonResult(MYTreeItem *obj1, MYTreeItem *obj2) {
-            return [obj1.orderNo compare:obj2.orderNo];
-        }].mutableCopy;
+        [self setupTopItemsWithFilterField:nil];
         
         // 3. 设置等级
-        for (MYTreeItem *item in items) {
-            int tmpLevel = 0;
-            MYTreeItem *p = item.parentItem;
-            while (p) {
-                tmpLevel++;
-                p = p.parentItem;
-            }
-            item.level = tmpLevel;
-            
-            // 设置最大等级
-            _maxLevel = MAX(_maxLevel, tmpLevel);
-        }
+        [self setupItemsLevel];
         
         // 4. 根据展开等级设置 showItems
-        NSMutableArray *showItems = [NSMutableArray array];
-        for (MYTreeItem *item in topItems) {
-            [self addItem:item toShowItems:showItems andAllowShowLevel:MAX(level, 0)];
-        }
-        _showItems = showItems;
-        
+        [self setupShowItemsWithShowLevel:level];
     }
     return self;
 }
+
+// 建立 map
+- (void)setupItemsMapWithItems:(NSArray *)items {
+    
+    NSMutableDictionary *itemsMap = [NSMutableDictionary dictionary];
+    for (MYTreeItem *item in items) {
+        [itemsMap setObject:item forKey:item.id];
+    }
+    self.itemsMap = itemsMap;
+}
+
+// 建立父子关系，并得到顶级节点
+- (void)setupTopItemsWithFilterField:(NSString *)field {
+    
+    self.tmpItems = self.itemsMap.allValues.mutableCopy;
+    
+    NSMutableArray *topItems = [NSMutableArray array];
+    for (MYTreeItem *item in self.tmpItems) {
+        if ([item.parentId isKindOfClass:[NSNumber class]]) {
+            MYTreeItem *parent = self.itemsMap[item.parentId];
+            if (parent) {
+                item.parentItem = parent;
+                if (![parent.childItems containsObject:item]) {
+                    [parent.childItems addObject:item];
+                }
+            }
+        }
+        if (!item.parentItem) {
+            [topItems addObject:item];
+        }
+    }
+    topItems = [topItems sortedArrayUsingComparator:^NSComparisonResult(MYTreeItem *obj1, MYTreeItem *obj2) {
+        return [obj1.orderNo compare:obj2.orderNo];
+    }].mutableCopy;
+    
+    self.topItems = topItems;
+}
+
+// 设置等级
+- (void)setupItemsLevel {
+    
+    for (MYTreeItem *item in self.tmpItems) {
+        int tmpLevel = 0;
+        MYTreeItem *p = item.parentItem;
+        while (p) {
+            tmpLevel++;
+            p = p.parentItem;
+        }
+        item.level = tmpLevel;
+        
+        // 设置最大等级
+        _maxLevel = MAX(_maxLevel, tmpLevel);
+    }
+}
+
+// 根据展开等级设置 showItems
+- (void)setupShowItemsWithShowLevel:(NSInteger)level {
+    
+    _showLevel = MAX(level, 0);
+    _showLevel = MIN(level, _maxLevel);
+ 
+    NSMutableArray *showItems = [NSMutableArray array];
+    for (MYTreeItem *item in self.topItems) {
+        [self addItem:item toShowItems:showItems andAllowShowLevel:_showLevel];
+    }
+    _showItems = showItems;
+}
+
 
 - (void)addItem:(MYTreeItem *)item toShowItems:(NSMutableArray *)showItems andAllowShowLevel:(NSInteger)level {
     
@@ -294,6 +330,50 @@
 }
 
 
+#pragma mark - Filter Item
+
+// 筛选
+- (void)filterField:(NSString *)field {
+    
+    [self setupTopItemsWithFilterField:field];
+    
+    // 筛选
+    if (field.length) {
+        
+        for (MYTreeItem *item in self.tmpItems) {
+            
+            if ([self isContainField:field andItems:@[item]]) {
+                continue;
+            }
+            
+            NSArray *parentItems = [self getAllParentItemsWithItem:item];
+            if ([self isContainField:field andItems:parentItems]) {
+                continue;
+            }
+            
+            NSArray *childItems = [self getAllChildItemsWithItem:item];
+            if ([self isContainField:field andItems:childItems]) {
+                continue;
+            }
+            
+            // 如果都不存在
+            [item.parentItem.childItems removeObject:item];
+            
+            if ([self.topItems containsObject:item]) {
+                [self.topItems removeObject:item];
+            }
+            
+            
+            for (MYTreeItem *item in childItems) {
+                [item.parentItem.childItems removeObject:item];
+            }
+        }
+    }
+    
+    [self setupShowItemsWithShowLevel:(field.length ? NSIntegerMax : _showLevel)];
+}
+
+
 #pragma mark - Other
 
 // 根据 id 获取 item
@@ -304,5 +384,50 @@
     return self.itemsMap[itemId];
 }
 
+// 获取该 item 下面所有子 item
+- (NSArray *)getAllChildItemsWithItem:(MYTreeItem *)item {
+    
+    NSMutableArray *childItems = [NSMutableArray array];
+    
+    [self addItem:item toChildItems:childItems];
+    
+    return childItems;
+}
+// 递归，获取该 item 下面所有子 item
+- (void)addItem:(MYTreeItem *)item toChildItems:(NSMutableArray *)childItems {
+    
+    for (MYTreeItem *childItem in item.childItems) {
+        
+        [childItems addObject:childItem];
+        [self addItem:childItem toChildItems:childItems];
+    }
+}
+
+// 获取该 item 的所有父 item
+- (NSArray *)getAllParentItemsWithItem:(MYTreeItem *)item {
+    
+    NSMutableArray *parentItems = [NSMutableArray array];
+    
+    MYTreeItem *parentItem = item.parentItem;
+    while (parentItem) {
+        [parentItems addObject:parentItem];
+        parentItem = parentItem.parentItem;
+    }
+    
+    return parentItems;
+}
+
+// item 数组中是否包含该字段
+- (BOOL)isContainField:(NSString *)field andItems:(NSArray *)items {
+    
+    BOOL isContain = NO;
+    for (MYTreeItem *item in items) {
+        if ([item.name containsString:field]) {
+            isContain = YES;
+            break;
+        }
+    }
+    return isContain;
+}
 
 @end

@@ -58,7 +58,7 @@
 }
 
 - (void)refreshData {
-    
+        
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         
         if ([self.classDelegate respondsToSelector:@selector(managerInTableViewController:)]) {
@@ -135,20 +135,23 @@
 
 /** 点击 search 键 */
 - (void)searchBarShouldReturn:(MYSearchBar *)searchBar {
-    
+   
+    [searchBar resignFirstResponder];
 }
 
 /** 点击清除数据键 */
 - (void)searchBarShouldClear:(MYSearchBar *)searchBar {
     
+    [self.manager filterField:nil];
+    [self.tableView reloadData];
+    [searchBar resignFirstResponder];
 }
 
 /** 实时查询搜索框中的文字 */
 - (void)searchBarEditingChanged:(MYSearchBar *)searchBar {
     
-    NSString *text = searchBar.text;
-    
-    
+    [self.manager filterField:searchBar.text];
+    [self.tableView reloadData];
 }
 
 /** 监控点击搜索框，埋点用 */
