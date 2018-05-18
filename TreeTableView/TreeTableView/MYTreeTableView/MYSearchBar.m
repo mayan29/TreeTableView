@@ -63,7 +63,6 @@
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    NSLog(@"搜索 - %@",textField.text);
     
     if ([self.delegate respondsToSelector:@selector(searchBarShouldReturn:)]) {
         [self.delegate searchBarShouldReturn:self];
@@ -72,7 +71,6 @@
 }
 
 - (BOOL)textFieldShouldClear:(UITextField *)textField {
-    NSLog(@"搜索－清除");
     
     if ([self.delegate respondsToSelector:@selector(searchBarShouldClear:)]) {
         [self.delegate searchBarShouldClear:self];
@@ -81,7 +79,6 @@
 }
 
 - (void)showText:(UITextField *)searchTextField {
-    NSLog(@"%@", searchTextField.text);
     
     if ([self.delegate respondsToSelector:@selector(searchBarEditingChanged:)]) {
         [self.delegate searchBarEditingChanged:self];

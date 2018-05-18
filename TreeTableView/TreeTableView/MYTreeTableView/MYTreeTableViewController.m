@@ -141,10 +141,10 @@
 
 /** 点击清除数据键 */
 - (void)searchBarShouldClear:(MYSearchBar *)searchBar {
-    
-    [self.manager filterField:nil];
-    [self.tableView reloadData];
-    [searchBar resignFirstResponder];
+
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [searchBar resignFirstResponder];
+    });
 }
 
 /** 实时查询搜索框中的文字 */
@@ -187,24 +187,27 @@
 - (void)tableView:(UITableView *)tableView didSelectItems:(NSArray <MYTreeItem *>*)items isExpand:(BOOL)isExpand {
     
     NSMutableArray *updateIndexPaths = [NSMutableArray array];
+    NSMutableArray *editIndexPaths   = [NSMutableArray array];
     
     for (MYTreeItem *item in items) {
         
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self.manager.showItems indexOfObject:item] inSection:0];
+        [updateIndexPaths addObject:indexPath];
         
         NSInteger updateNum = [self.manager expandItem:item];
         NSArray *tmp = [self getUpdateIndexPathsWithCurrentIndexPath:indexPath andUpdateNum:updateNum];
-        
-        [updateIndexPaths addObjectsFromArray:tmp];
-        
-        MYTreeTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        [cell updateItem];
+        [editIndexPaths addObjectsFromArray:tmp];
     }
     
     if (isExpand) {
-        [tableView insertRowsAtIndexPaths:updateIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+        [tableView insertRowsAtIndexPaths:editIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
     } else {
-        [tableView deleteRowsAtIndexPaths:updateIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+        [tableView deleteRowsAtIndexPaths:editIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+    
+    for (NSIndexPath *indexPath in updateIndexPaths) {
+        MYTreeTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        [cell updateItem];
     }
 }
 

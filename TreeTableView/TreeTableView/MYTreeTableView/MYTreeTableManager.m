@@ -59,8 +59,12 @@
     
     self.tmpItems = self.itemsMap.allValues.mutableCopy;
     
+    // 建立父子关系
     NSMutableArray *topItems = [NSMutableArray array];
     for (MYTreeItem *item in self.tmpItems) {
+        
+        item.isExpand = NO;
+        
         if ([item.parentId isKindOfClass:[NSNumber class]]) {
             MYTreeItem *parent = self.itemsMap[item.parentId];
             if (parent) {
@@ -74,6 +78,15 @@
             [topItems addObject:item];
         }
     }
+    
+    // 所有 item 排序
+    for (MYTreeItem *item in self.tmpItems) {
+        item.childItems = [item.childItems sortedArrayUsingComparator:^NSComparisonResult(MYTreeItem *obj1, MYTreeItem *obj2) {
+            return [obj1.orderNo compare:obj2.orderNo];
+        }].mutableCopy;
+    }
+    
+    // 顶级节点排序
     topItems = [topItems sortedArrayUsingComparator:^NSComparisonResult(MYTreeItem *obj1, MYTreeItem *obj2) {
         return [obj1.orderNo compare:obj2.orderNo];
     }].mutableCopy;
@@ -214,7 +227,7 @@
     }
     
     // 再一级一级展开
-    for (NSInteger level = 0; level < expandLevel; level++) {
+    for (NSInteger level = 0; level <= expandLevel; level++) {
         
         NSMutableArray *itemArray = [NSMutableArray array];
         for (NSInteger i = 0; i < self.showItems.count; i++) {
@@ -342,17 +355,18 @@
         
         for (MYTreeItem *item in self.tmpItems) {
             
+            NSArray *childItems  = [self getAllChildItemsWithItem:item];
+            if ([self isContainField:field andItems:childItems]) {
+                item.isExpand = YES;
+                continue;
+            }
+            
             if ([self isContainField:field andItems:@[item]]) {
                 continue;
             }
             
             NSArray *parentItems = [self getAllParentItemsWithItem:item];
             if ([self isContainField:field andItems:parentItems]) {
-                continue;
-            }
-            
-            NSArray *childItems = [self getAllChildItemsWithItem:item];
-            if ([self isContainField:field andItems:childItems]) {
                 continue;
             }
             
@@ -363,14 +377,46 @@
                 [self.topItems removeObject:item];
             }
             
-            
             for (MYTreeItem *item in childItems) {
                 [item.parentItem.childItems removeObject:item];
             }
         }
     }
     
-    [self setupShowItemsWithShowLevel:(field.length ? NSIntegerMax : _showLevel)];
+    // 设置 showItems
+    if (field.length) {
+        NSMutableArray *showItems = [NSMutableArray array];
+        for (MYTreeItem *item in self.topItems) {
+            [self addItem:item toShowItems:showItems];
+        }
+        _showItems = showItems;
+    }
+    else {
+        [self setupShowItemsWithShowLevel:_showLevel];
+    }
+    
+    // 刷新勾选状态
+    for (MYTreeItem *item in self.tmpItems) {
+        // 刷新父 item 勾选状态
+        [self refreshParentItemWithItem:item];
+    }
+}
+- (void)addItem:(MYTreeItem *)item toShowItems:(NSMutableArray *)showItems {
+    
+    [showItems addObject:item];
+    
+    if (item.childItems.count) {
+        
+        item.childItems = [item.childItems sortedArrayUsingComparator:^NSComparisonResult(MYTreeItem *obj1, MYTreeItem *obj2) {
+            return [obj1.orderNo compare:obj2.orderNo];
+        }].mutableCopy;
+        
+        for (MYTreeItem *childItem in item.childItems) {
+            if (item.isExpand) {
+                [self addItem:childItem toShowItems:showItems];
+            }
+        }
+    }
 }
 
 
