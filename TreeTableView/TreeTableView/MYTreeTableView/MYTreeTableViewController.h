@@ -19,6 +19,8 @@
 - (MYTreeTableManager *)managerInTableViewController:(MYTreeTableViewController *)tableViewController;
 /** 如果是单选，点击 cell 会直接调用，如果是多选，通过 prepareCommit 方法会调用 */
 - (void)tableViewController:(MYTreeTableViewController *)tableViewController checkItems:(NSArray <MYTreeItem *>*)items;
+/** 监控点击搜索框，埋点用 */
+- (void)searchBarShouldBeginEditingInTableViewController:(MYTreeTableViewController *)tableViewController;
 
 @end
 

@@ -157,6 +157,9 @@
 /** 监控点击搜索框，埋点用 */
 - (void)searchBarShouldBeginEditing:(MYSearchBar *)searchBar {
     
+    if ([self.classDelegate respondsToSelector:@selector(searchBarShouldBeginEditingInTableViewController:)]) {
+        [self.classDelegate searchBarShouldBeginEditingInTableViewController:self];
+    }
 }
 
 
