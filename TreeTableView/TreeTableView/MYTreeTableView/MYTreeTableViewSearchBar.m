@@ -6,15 +6,15 @@
 //  Copyright © 2018年 mayan. All rights reserved.
 //
 
-#import "MYSearchBar.h"
+#import "MYTreeTableViewSearchBar.h"
 
-@interface MYSearchBar () <UITextFieldDelegate>
+@interface MYTreeTableViewSearchBar () <UITextFieldDelegate>
 
 @property (nonatomic, strong) UITextField *textField;
 
 @end
 
-@implementation MYSearchBar
+@implementation MYTreeTableViewSearchBar
 
 
 #pragma mark - Lazy Load
@@ -64,31 +64,31 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     
-    if ([self.delegate respondsToSelector:@selector(searchBarShouldReturn:)]) {
-        [self.delegate searchBarShouldReturn:self];
+    if ([self.delegate respondsToSelector:@selector(treeTableViewSearchBarShouldReturn:)]) {
+        [self.delegate treeTableViewSearchBarShouldReturn:self];
     }
     return YES;
 }
 
 - (BOOL)textFieldShouldClear:(UITextField *)textField {
     
-    if ([self.delegate respondsToSelector:@selector(searchBarShouldClear:)]) {
-        [self.delegate searchBarShouldClear:self];
+    if ([self.delegate respondsToSelector:@selector(treeTableViewSearchBarShouldClear:)]) {
+        [self.delegate treeTableViewSearchBarShouldClear:self];
     }
     return YES;
 }
 
 - (void)showText:(UITextField *)searchTextField {
     
-    if ([self.delegate respondsToSelector:@selector(searchBarEditingChanged:)]) {
-        [self.delegate searchBarEditingChanged:self];
+    if ([self.delegate respondsToSelector:@selector(treeTableViewSearchBarEditingChanged:)]) {
+        [self.delegate treeTableViewSearchBarEditingChanged:self];
     }
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     
-    if ([self.delegate respondsToSelector:@selector(searchBarShouldBeginEditing:)]) {
-        [self.delegate searchBarShouldBeginEditing:self];
+    if ([self.delegate respondsToSelector:@selector(treeTableViewSearchBarShouldBeginEditing:)]) {
+        [self.delegate treeTableViewSearchBarShouldBeginEditing:self];
     }
     return YES;
 }

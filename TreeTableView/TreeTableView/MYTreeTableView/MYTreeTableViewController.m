@@ -9,9 +9,9 @@
 #import "MYTreeTableViewController.h"
 #import "MYTreeTableManager.h"
 #import "MYTreeTableViewCell.h"
-#import "MYSearchBar.h"
+#import "MYTreeTableViewSearchBar.h"
 
-@interface MYTreeTableViewController () <MYSearchBarDelegate>
+@interface MYTreeTableViewController () <MYTreeTableViewSearchBarDelegate>
 
 @property (nonatomic, strong) MYTreeTableManager *manager;
 @property (nonatomic, strong) UIRefreshControl   *myRefreshControl;
@@ -127,20 +127,20 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    [(MYSearchBar *)self.tableView.tableHeaderView resignFirstResponder];
+    [(MYTreeTableViewSearchBar *)self.tableView.tableHeaderView resignFirstResponder];
 }
 
 
 #pragma mark - MYSearchTextFieldDelegate
 
 /** 点击 search 键 */
-- (void)searchBarShouldReturn:(MYSearchBar *)searchBar {
+- (void)treeTableViewSearchBarShouldReturn:(MYTreeTableViewSearchBar *)searchBar {
    
     [searchBar resignFirstResponder];
 }
 
 /** 点击清除数据键 */
-- (void)searchBarShouldClear:(MYSearchBar *)searchBar {
+- (void)treeTableViewSearchBarShouldClear:(MYTreeTableViewSearchBar *)searchBar {
 
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [searchBar resignFirstResponder];
@@ -148,14 +148,14 @@
 }
 
 /** 实时查询搜索框中的文字 */
-- (void)searchBarEditingChanged:(MYSearchBar *)searchBar {
+- (void)treeTableViewSearchBarEditingChanged:(MYTreeTableViewSearchBar *)searchBar {
     
     [self.manager filterField:searchBar.text];
     [self.tableView reloadData];
 }
 
 /** 监控点击搜索框，埋点用 */
-- (void)searchBarShouldBeginEditing:(MYSearchBar *)searchBar {
+- (void)treeTableViewSearchBarShouldBeginEditing:(MYTreeTableViewSearchBar *)searchBar {
     
     if ([self.classDelegate respondsToSelector:@selector(searchBarShouldBeginEditingInTableViewController:)]) {
         [self.classDelegate searchBarShouldBeginEditingInTableViewController:self];
@@ -179,9 +179,9 @@
     return [UIColor colorWithRed:redNum/255.0 green:greenNum/255.0 blue:blueNum/255.0 alpha:1.0];
 }
 
-- (MYSearchBar *)getSearchBar {
+- (MYTreeTableViewSearchBar *)getSearchBar {
     
-    MYSearchBar *searchBar = [[MYSearchBar alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 40)];
+    MYTreeTableViewSearchBar *searchBar = [[MYTreeTableViewSearchBar alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 40)];
     searchBar.delegate = self;
 
     return searchBar;
