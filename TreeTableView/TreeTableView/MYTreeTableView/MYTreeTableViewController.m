@@ -115,6 +115,10 @@
                 [wself.classDelegate tableViewController:wself checkItems:@[item]];
             }
         }
+        
+        if ([wself.classDelegate respondsToSelector:@selector(tableViewController:didSelectCheckBoxRowAtIndexPath:)]) {
+            [wself.classDelegate tableViewController:wself didSelectCheckBoxRowAtIndexPath:indexPath];
+        }
     };
     return cell;
 }
@@ -124,6 +128,10 @@
     MYTreeItem *item = self.manager.showItems[indexPath.row];
     
     [self tableView:tableView didSelectItems:@[item] isExpand:!item.isExpand];
+    
+    if ([self.classDelegate respondsToSelector:@selector(tableViewController:didSelectRowAtIndexPath:)]) {
+        [self.classDelegate tableViewController:self didSelectRowAtIndexPath:indexPath];
+    }
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -252,6 +260,11 @@
     if ([self.classDelegate respondsToSelector:@selector(tableViewController:checkItems:)]) {
         [self.classDelegate tableViewController:self checkItems:checkItems];
     }
+}
+
+- (NSArray *)getShowItems {
+    
+    return self.manager.showItems;
 }
 
 

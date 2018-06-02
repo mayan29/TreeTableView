@@ -129,7 +129,7 @@
     
     [showItems addObject:item];
     
-    if (item.childItems.count && item.level < level) {
+    if (item.level <= level) {
         
         item.isExpand = YES;
         item.childItems = [item.childItems sortedArrayUsingComparator:^NSComparisonResult(MYTreeItem *obj1, MYTreeItem *obj2) {

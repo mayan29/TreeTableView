@@ -21,6 +21,10 @@
 - (void)tableViewController:(MYTreeTableViewController *)tableViewController checkItems:(NSArray <MYTreeItem *>*)items;
 /** 监控点击搜索框，埋点用 */
 - (void)searchBarShouldBeginEditingInTableViewController:(MYTreeTableViewController *)tableViewController;
+/** 监听 cell 点击事件 */
+- (void)tableViewController:(MYTreeTableViewController *)tableViewController didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+/** 监听 cell 的 checkbox 点击事件 */
+- (void)tableViewController:(MYTreeTableViewController *)tableViewController didSelectCheckBoxRowAtIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
@@ -56,5 +60,8 @@
 - (void)expandItemWithLevel:(NSInteger)expandLevel;
 /** 准备提交，调用代理方法 */
 - (void)prepareCommit;
+/** 获取当前显示的 showItems */
+- (NSArray *)getShowItems;
+
 
 @end

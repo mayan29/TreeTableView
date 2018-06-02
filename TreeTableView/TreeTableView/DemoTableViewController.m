@@ -84,5 +84,14 @@
     NSLog(@"点击了搜索栏");
 }
 
+- (void)tableViewController:(MYTreeTableViewController *)tableViewController didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSLog(@"点击了第 %ld 行", (long)indexPath.row);
+}
+
+- (void)tableViewController:(MYTreeTableViewController *)tableViewController didSelectCheckBoxRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSLog(@"点击了第 %ld 行的 checkbox", (long)indexPath.row);
+}
 
 @end
