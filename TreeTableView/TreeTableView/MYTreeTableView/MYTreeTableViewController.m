@@ -20,22 +20,18 @@
 
 @implementation MYTreeTableViewController
 
+- (instancetype)initWithStyle:(UITableViewStyle)style {
+    self = [super initWithStyle:style];
+    if (self) {
+        [self initialization];
+    }
+    return self;
+}
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
-        
-        self.isSingleCheck    = NO;
-        self.isShowArrow      = YES;
-        self.isShowCheck      = YES;
-        self.isShowLevelColor = NO;
-        self.isShowSearchBar  = YES;
-        self.isRealTimeSearch = YES;
-        
-        self.normalBackgroundColor = [UIColor whiteColor];
-        self.levelColorArray = @[[self getColorWithRed:230 green:230 blue:230],
-                                 [self getColorWithRed:238 green:238 blue:238]];
+        [self initialization];
     }
     return self;
 }
@@ -220,6 +216,20 @@
         MYTreeTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         [cell updateItem];
     }
+}
+
+- (void)initialization {
+    
+    self.isSingleCheck    = NO;
+    self.isShowArrow      = YES;
+    self.isShowCheck      = YES;
+    self.isShowLevelColor = NO;
+    self.isShowSearchBar  = YES;
+    self.isRealTimeSearch = YES;
+    
+    self.normalBackgroundColor = [UIColor whiteColor];
+    self.levelColorArray = @[[self getColorWithRed:230 green:230 blue:230],
+                             [self getColorWithRed:238 green:238 blue:238]];
 }
 
 
