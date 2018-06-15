@@ -23,6 +23,7 @@
 		BC0360B420A53CB0009CA1E4 /* DemoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0360B320A53CB0009CA1E4 /* DemoTableViewController.m */; };
 		BC0360B620A53DFF009CA1E4 /* Resource.json in Resources */ = {isa = PBXBuildFile; fileRef = BC0360B520A53DFF009CA1E4 /* Resource.json */; };
 		BC0360B920A57BFB009CA1E4 /* MYTreeTableViewSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0360B820A57BFB009CA1E4 /* MYTreeTableViewSearchBar.m */; };
+		BCCB605220D3BCC5009D0466 /* cityResource.json in Resources */ = {isa = PBXBuildFile; fileRef = BCCB605120D3BCC5009D0466 /* cityResource.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		BC0360B520A53DFF009CA1E4 /* Resource.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Resource.json; sourceTree = "<group>"; };
 		BC0360B720A57BFB009CA1E4 /* MYTreeTableViewSearchBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MYTreeTableViewSearchBar.h; sourceTree = "<group>"; };
 		BC0360B820A57BFB009CA1E4 /* MYTreeTableViewSearchBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MYTreeTableViewSearchBar.m; sourceTree = "<group>"; };
+		BCCB605120D3BCC5009D0466 /* cityResource.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cityResource.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 				BC03606D20A53BEE009CA1E4 /* LaunchScreen.storyboard */,
 				BC03607020A53BEE009CA1E4 /* Info.plist */,
 				BC03607120A53BEE009CA1E4 /* main.m */,
+				BCCB605120D3BCC5009D0466 /* cityResource.json */,
 				BC0360B520A53DFF009CA1E4 /* Resource.json */,
 			);
 			path = TreeTableView;
@@ -281,6 +284,7 @@
 			files = (
 				BC0360B620A53DFF009CA1E4 /* Resource.json in Resources */,
 				BC03606F20A53BEE009CA1E4 /* LaunchScreen.storyboard in Resources */,
+				BCCB605220D3BCC5009D0466 /* cityResource.json in Resources */,
 				BC03606C20A53BEE009CA1E4 /* Assets.xcassets in Resources */,
 				BC03606A20A53BEC009CA1E4 /* Main.storyboard in Resources */,
 				BC0360B120A53C68009CA1E4 /* MYTreeTableView.bundle in Resources */,

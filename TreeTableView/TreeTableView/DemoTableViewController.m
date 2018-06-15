@@ -45,27 +45,82 @@
 
 #pragma mark - MYTreeTableViewControllerParentClassDelegate
 
+//- (MYTreeTableManager *)managerInTableViewController:(MYTreeTableViewController *)tableViewController {
+//
+//    // 获取数据并创建树形结构
+//    NSData *JSONData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Resource" ofType:@"json"]];
+//    NSArray *dataArray = [NSJSONSerialization JSONObjectWithData:JSONData options:NSJSONReadingAllowFragments error:nil];
+//
+//    NSMutableArray *items = [NSMutableArray array];
+//    for (NSDictionary *data in dataArray) {
+//        MYTreeItem *item = [[MYTreeItem alloc] initWithName:data[@"name"]
+//                                                         id:data[@"id"]
+//                                                   parentId:data[@"pid"]
+//                                                    orderNo:data[@"order_no"]
+//                                                       type:data[@"type"]
+//                                                     isLeaf:[data[@"type"] isEqualToString:@"ControlPoint"]
+//                                                       data:data];
+//        [items addObject:item];
+//    }
+//
+//    // ExpandLevel 为 0 全部折叠，为 1 展开一级，以此类推，为 NSIntegerMax 全部展开
+//    MYTreeTableManager *manager = [[MYTreeTableManager alloc] initWithItems:items andExpandLevel:0];
+//
+//    return manager;
+//}
+
 - (MYTreeTableManager *)managerInTableViewController:(MYTreeTableViewController *)tableViewController {
-    
+
     // 获取数据并创建树形结构
-    NSData *JSONData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Resource" ofType:@"json"]];
-    NSArray *dataArray = [NSJSONSerialization JSONObjectWithData:JSONData options:NSJSONReadingAllowFragments error:nil];
-    
+    NSData *JSONData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"cityResource" ofType:@"json"]];
+    NSArray *provinceArray = [NSJSONSerialization JSONObjectWithData:JSONData options:NSJSONReadingAllowFragments error:nil];
+
     NSMutableArray *items = [NSMutableArray array];
-    for (NSDictionary *data in dataArray) {
-        MYTreeItem *item = [[MYTreeItem alloc] initWithName:data[@"name"]
-                                                         id:data[@"id"]
-                                                   parentId:data[@"pid"]
-                                                    orderNo:data[@"order_no"]
-                                                       type:data[@"type"]
-                                                     isLeaf:[data[@"type"] isEqualToString:@"ControlPoint"]
-                                                       data:data];
-        [items addObject:item];
-    }
-    
+
+    // 1. 遍历省份
+    [provinceArray enumerateObjectsUsingBlock:^(NSDictionary *province, NSUInteger idx, BOOL * _Nonnull stop) {
+
+        MYTreeItem *provinceItem = [[MYTreeItem alloc] initWithName:province[@"name"]
+                                                                 id:@([province[@"code"] integerValue])
+                                                           parentId:nil
+                                                            orderNo:@(idx)
+                                                               type:@"province"
+                                                             isLeaf:NO
+                                                               data:province];
+        [items addObject:provinceItem];
+
+        // 2. 遍历城市
+        NSArray *cityArray = province[@"children"];
+        [cityArray enumerateObjectsUsingBlock:^(NSDictionary *city, NSUInteger idx, BOOL * _Nonnull stop) {
+
+            MYTreeItem *cityItem = [[MYTreeItem alloc] initWithName:city[@"name"]
+                                                                 id:@([city[@"code"] integerValue])
+                                                           parentId:provinceItem.id
+                                                            orderNo:@(idx)
+                                                               type:@"city"
+                                                             isLeaf:NO
+                                                               data:city];
+            [items addObject:cityItem];
+
+            // 3. 遍历区
+            NSArray *districtArray = city[@"children"];
+            [districtArray enumerateObjectsUsingBlock:^(NSDictionary *district, NSUInteger idx, BOOL * _Nonnull stop) {
+
+                MYTreeItem *districtItem = [[MYTreeItem alloc] initWithName:district[@"name"]
+                                                                         id:@([district[@"code"] integerValue])
+                                                                   parentId:cityItem.id
+                                                                    orderNo:@(idx)
+                                                                       type:@"district"
+                                                                     isLeaf:YES
+                                                                       data:district];
+                [items addObject:districtItem];
+            }];
+        }];
+    }];
+
     // ExpandLevel 为 0 全部折叠，为 1 展开一级，以此类推，为 NSIntegerMax 全部展开
     MYTreeTableManager *manager = [[MYTreeTableManager alloc] initWithItems:items andExpandLevel:0];
-    
+
     return manager;
 }
 
