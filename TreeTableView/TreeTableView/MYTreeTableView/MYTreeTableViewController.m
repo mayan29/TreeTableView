@@ -206,10 +206,14 @@
         [editIndexPaths addObjectsFromArray:tmp];
     }
     
-    if (isExpand) {
-        [tableView insertRowsAtIndexPaths:editIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+    if (self.isShowExpandAnimation) {
+        if (isExpand) {
+            [tableView insertRowsAtIndexPaths:editIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+        } else {
+            [tableView deleteRowsAtIndexPaths:editIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
     } else {
-        [tableView deleteRowsAtIndexPaths:editIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+        [tableView reloadData];
     }
     
     for (NSIndexPath *indexPath in updateIndexPaths) {
@@ -220,12 +224,13 @@
 
 - (void)initialization {
     
-    self.isSingleCheck    = NO;
-    self.isShowArrow      = YES;
-    self.isShowCheck      = YES;
-    self.isShowLevelColor = NO;
-    self.isShowSearchBar  = YES;
-    self.isRealTimeSearch = YES;
+    self.isSingleCheck         = NO;
+    self.isShowArrow           = YES;
+    self.isShowCheck           = YES;
+    self.isShowLevelColor      = NO;
+    self.isShowSearchBar       = YES;
+    self.isRealTimeSearch      = YES;
+    self.isShowExpandAnimation = YES;
     
     self.normalBackgroundColor = [UIColor whiteColor];
     self.levelColorArray = @[[self getColorWithRed:230 green:230 blue:230],

@@ -18,6 +18,8 @@
 @property (weak, nonatomic) IBOutlet UISwitch *isShowLevelColorSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *isShowSearchBarSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *isRealTimeSearchSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *isShowExpandAnimation;
+
 
 @property (weak, nonatomic) IBOutlet UILabel  *showLabel;
 
@@ -32,13 +34,14 @@
     
     // 这里的个性化设置也可以移到 DemoTableViewController 中的 viewDidLoad 执行
     DemoTableViewController *vc = [[DemoTableViewController alloc] init];
-    vc.delegate         = self;
-    vc.isSingleCheck    = self.isSingleCheckSwitch.isOn;
-    vc.isShowArrow      = self.isShowArrowSwitch.isOn;
-    vc.isShowCheck      = self.isShowCheckSwitch.isOn;
-    vc.isShowLevelColor = self.isShowLevelColorSwitch.isOn;
-    vc.isShowSearchBar  = self.isShowSearchBarSwitch.isOn;
-    vc.checkItemIds     = [self getItemIds];
+    vc.delegate              = self;
+    vc.isSingleCheck         = self.isSingleCheckSwitch.isOn;
+    vc.isShowArrow           = self.isShowArrowSwitch.isOn;
+    vc.isShowCheck           = self.isShowCheckSwitch.isOn;
+    vc.isShowLevelColor      = self.isShowLevelColorSwitch.isOn;
+    vc.isShowSearchBar       = self.isShowSearchBarSwitch.isOn;
+    vc.checkItemIds          = [self getItemIds];
+    vc.isShowExpandAnimation = self.isShowExpandAnimation.isOn;
     
     [self.navigationController pushViewController:vc animated:YES];
 }
