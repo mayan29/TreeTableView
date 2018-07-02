@@ -48,6 +48,12 @@
 
 - (NSArray *)getItemIds {
     
+    // demo 中的逻辑判断没有处理的那么严谨，多选切换成单选后，当前多选选择的数据全部清空
+    if (self.isSingleCheckSwitch.isOn && self.checkItems.count > 1) {
+        self.checkItems = [NSArray array];
+        self.showLabel.text = @"已选择了 0 个 items";
+    }
+    
     NSMutableArray *itemIds = [NSMutableArray array];
     for (MYTreeItem *item in self.checkItems) {
         [itemIds addObject:item.id];

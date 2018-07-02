@@ -127,11 +127,11 @@
 
 - (void)addItem:(MYTreeItem *)item toShowItems:(NSMutableArray *)showItems andAllowShowLevel:(NSInteger)level {
     
-    [showItems addObject:item];
-    
     if (item.level <= level) {
         
-        item.isExpand = YES;
+        [showItems addObject:item];
+        
+        item.isExpand = !(item.level == level);
         item.childItems = [item.childItems sortedArrayUsingComparator:^NSComparisonResult(MYTreeItem *obj1, MYTreeItem *obj2) {
             return [obj1.orderNo compare:obj2.orderNo];
         }].mutableCopy;
