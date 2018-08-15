@@ -282,5 +282,13 @@
     return self.manager.showItems;
 }
 
+- (NSArray *)getAllItems {
+    return [self.manager getAllItems];
+}
+
+- (NSArray *)getCheckItems {
+    return [self.manager getAllCheckItem];
+}
+
 
 @end

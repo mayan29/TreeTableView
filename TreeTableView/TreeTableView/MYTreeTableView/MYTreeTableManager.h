@@ -37,6 +37,8 @@
 
 /** 根据 id 获取 item */
 - (MYTreeItem *)getItemWithItemId:(NSNumber *)itemId;
+/** 获取所有 items */
+- (NSArray *)getAllItems;
 
 
 @end

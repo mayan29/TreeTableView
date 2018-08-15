@@ -63,6 +63,10 @@
 - (void)prepareCommit;
 /** 获取当前显示的 showItems */
 - (NSArray *)getShowItems;
+/** 获取所有的 Items */
+- (NSArray *)getAllItems;
+/** 获取所有勾选的 Items */
+- (NSArray *)getCheckItems;
 
 
 @end

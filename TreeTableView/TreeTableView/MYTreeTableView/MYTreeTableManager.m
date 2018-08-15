@@ -476,4 +476,8 @@
     return isContain;
 }
 
+- (NSArray *)getAllItems {
+    return [self.itemsMap allValues];
+}
+
 @end
