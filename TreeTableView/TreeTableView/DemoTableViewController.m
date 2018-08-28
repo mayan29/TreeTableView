@@ -53,10 +53,11 @@
 
     NSMutableArray *items = [NSMutableArray array];
     for (NSDictionary *data in dataArray) {
+        
         MYTreeItem *item = [[MYTreeItem alloc] initWithName:data[@"name"]
-                                                         id:data[@"id"]
-                                                   parentId:data[@"pid"]
-                                                    orderNo:data[@"order_no"]
+                                                         ID:[NSString stringWithFormat:@"%@", data[@"id"]]
+                                                   parentID:[NSString stringWithFormat:@"%@", data[@"pid"]]
+                                                    orderNo:[NSString stringWithFormat:@"%@", data[@"order_no"]]
                                                        type:data[@"type"]
                                                      isLeaf:[data[@"type"] isEqualToString:@"ControlPoint"]
                                                        data:data];

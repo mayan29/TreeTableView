@@ -56,7 +56,7 @@
     
     NSMutableArray *itemIds = [NSMutableArray array];
     for (MYTreeItem *item in self.checkItems) {
-        [itemIds addObject:item.id];
+        [itemIds addObject:item.ID];
     }
     return itemIds.copy;
 }

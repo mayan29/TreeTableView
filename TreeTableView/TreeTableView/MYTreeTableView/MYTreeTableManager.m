@@ -6,6 +6,7 @@
 //  Copyright © 2018年 mayan. All rights reserved.
 //  https://github.com/mayan29/TreeTableView
 
+
 #import "MYTreeTableManager.h"
 #import "MYTreeItem.h"
 
@@ -29,8 +30,8 @@
     self = [super init];
     if (self) {
         
-        // 1. 建立 map
-        [self setupItemsMapWithItems:items];
+        // 1. 建立 MAP
+        [self setupItemsMapByItems:items];
         
         // 2. 建立父子关系，并得到顶级节点
         [self setupTopItemsWithFilterField:nil];
@@ -44,14 +45,14 @@
     return self;
 }
 
-// 建立 map
-- (void)setupItemsMapWithItems:(NSArray *)items {
+// 建立 MAP
+- (void)setupItemsMapByItems:(NSArray *)items {
     
     NSMutableDictionary *itemsMap = [NSMutableDictionary dictionary];
     for (MYTreeItem *item in items) {
-        [itemsMap setObject:item forKey:item.id];
+        [itemsMap setObject:item forKey:item.ID];
     }
-    self.itemsMap = itemsMap;
+    self.itemsMap = itemsMap.copy;
 }
 
 // 建立父子关系，并得到顶级节点
@@ -65,8 +66,8 @@
         
         item.isExpand = NO;
         
-        if ([item.parentId isKindOfClass:[NSNumber class]]) {
-            MYTreeItem *parent = self.itemsMap[item.parentId];
+        if ([item.parentID isKindOfClass:[NSString class]]) {
+            MYTreeItem *parent = self.itemsMap[item.parentID];
             if (parent) {
                 item.parentItem = parent;
                 if (![parent.childItems containsObject:item]) {
@@ -87,11 +88,9 @@
     }
     
     // 顶级节点排序
-    topItems = [topItems sortedArrayUsingComparator:^NSComparisonResult(MYTreeItem *obj1, MYTreeItem *obj2) {
+    self.topItems = [topItems sortedArrayUsingComparator:^NSComparisonResult(MYTreeItem *obj1, MYTreeItem *obj2) {
         return [obj1.orderNo compare:obj2.orderNo];
-    }].mutableCopy;
-    
-    self.topItems = topItems;
+    }].mutableCopy;    
 }
 
 // 设置等级

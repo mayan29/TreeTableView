@@ -6,21 +6,30 @@
 //  Copyright © 2018年 mayan. All rights reserved.
 //  https://github.com/mayan29/TreeTableView
 
+
 #import "MYTreeItem.h"
 
 @implementation MYTreeItem
 
-- (instancetype)initWithName:(NSString *)name id:(NSNumber *)id parentId:(NSNumber *)parentId orderNo:(NSNumber *)orderNo type:(NSString *)type isLeaf:(BOOL)isLeaf data:(id)data {
+
+- (instancetype)initWithName:(NSString *)name
+                          ID:(NSString *)ID
+                    parentID:(NSString *)parentID
+                     orderNo:(NSString *)orderNo
+                        type:(NSString *)type
+                      isLeaf:(BOOL)isLeaf
+                        data:(id)data {
     
     self = [super init];
     if (self) {
         _name       = name;
-        _id         = id;
-        _parentId   = parentId;
+        _ID         = ID;
+        _parentID   = parentID;
         _orderNo    = orderNo;
         _type       = type;
         _isLeaf     = isLeaf;
         _data       = data;
+        
         _level      = 0;
         _isExpand   = NO;
         _checkState = MYTreeItemDefault;
