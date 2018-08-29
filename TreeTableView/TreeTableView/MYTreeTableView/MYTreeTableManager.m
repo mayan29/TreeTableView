@@ -220,13 +220,15 @@
             }
         }
         
-        if (noExpandCompleted) {
-            noExpandCompleted(itemArray);
+        if (itemArray.count) {
+            if (noExpandCompleted) {
+                noExpandCompleted(itemArray);
+            }
         }
     }
     
     // 再一级一级展开
-    for (NSInteger level = 0; level <= expandLevel; level++) {
+    for (NSInteger level = 0; level < expandLevel; level++) {
         
         NSMutableArray *itemArray = [NSMutableArray array];
         for (NSInteger i = 0; i < self.showItems.count; i++) {
@@ -237,8 +239,10 @@
             }
         }
         
-        if (expandCompleted) {
-            expandCompleted(itemArray);
+        if (itemArray.count) {
+            if (expandCompleted) {
+                expandCompleted(itemArray);
+            }
         }
     }
 }
