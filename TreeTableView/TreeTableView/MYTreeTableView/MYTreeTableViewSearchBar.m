@@ -71,14 +71,6 @@
     return YES;
 }
 
-- (BOOL)textFieldShouldClear:(UITextField *)textField {
-    
-    if ([self.delegate respondsToSelector:@selector(treeTableViewSearchBarShouldClear:)]) {
-        [self.delegate treeTableViewSearchBarShouldClear:self];
-    }
-    return YES;
-}
-
 - (void)showText:(UITextField *)searchTextField {
     
     if ([self.delegate respondsToSelector:@selector(treeTableViewSearchBarEditingChanged:)]) {

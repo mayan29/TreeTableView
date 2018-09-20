@@ -16,8 +16,6 @@
 
 /** 点击 search 键 */
 - (void)treeTableViewSearchBarShouldReturn:(MYTreeTableViewSearchBar *)searchBar;
-/** 点击清除数据键 */
-- (void)treeTableViewSearchBarShouldClear:(MYTreeTableViewSearchBar *)searchBar;
 /** 实时查询搜索框中的文字 */
 - (void)treeTableViewSearchBarEditingChanged:(MYTreeTableViewSearchBar *)searchBar;
 /** 监控点击搜索框，埋点用 */

@@ -63,8 +63,8 @@
             self.manager = [self.classDelegate managerInTableViewController:self];
             
             // 遍历外部传来的所选择的 itemId
-            for (NSNumber *itemId in self.checkItemIds) {
-                MYTreeItem *item = [self.manager getItemWithItemId:itemId];
+            for (NSString *itemId in self.checkItemIds) {
+                MYTreeItem *item = [self.manager getItemById:itemId];
                 if (item) {
                     [self.manager checkItem:item isCheck:YES];
                 }
@@ -103,19 +103,32 @@
     __weak typeof(self)wself = self;
     cell.checkButtonClickBlock = ^(MYTreeItem *item) {
         
-        [wself.manager checkItem:item];
-        [wself.tableView reloadData];
-        
         // 如果是单选，除了勾选之外，还需把勾选的 item 传出去
         if (wself.isSingleCheck) {
-            if ([wself.classDelegate respondsToSelector:@selector(tableViewController:checkItems:)]) {
-                [wself.classDelegate tableViewController:wself checkItems:@[item]];
+            if (wself.isCancelSingleCheckSwitch && (item.checkState == MYTreeItemChecked)) {
+                
+                item.checkState = MYTreeItemDefault;
+                
+                if ([wself.classDelegate respondsToSelector:@selector(tableViewController:checkItems:)]) {
+                    [wself.classDelegate tableViewController:wself checkItems:@[]];
+                }
+            } else {
+                
+                item.checkState = MYTreeItemChecked;
+                
+                if ([wself.classDelegate respondsToSelector:@selector(tableViewController:checkItems:)]) {
+                    [wself.classDelegate tableViewController:wself checkItems:@[item]];
+                }
             }
+        } else {
+            [wself.manager checkItem:item];
         }
         
         if ([wself.classDelegate respondsToSelector:@selector(tableViewController:didSelectCheckBoxRowAtIndexPath:)]) {
             [wself.classDelegate tableViewController:wself didSelectCheckBoxRowAtIndexPath:indexPath];
         }
+        
+        [wself.tableView reloadData];
     };
     return cell;
 }
@@ -142,14 +155,6 @@
 - (void)treeTableViewSearchBarShouldReturn:(MYTreeTableViewSearchBar *)searchBar {
    
     [searchBar resignFirstResponder];
-}
-
-/** 点击清除数据键 */
-- (void)treeTableViewSearchBarShouldClear:(MYTreeTableViewSearchBar *)searchBar {
-
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [searchBar resignFirstResponder];
-    });
 }
 
 /** 实时查询搜索框中的文字 */
@@ -284,7 +289,7 @@
 }
 
 - (NSArray *)getAllItems {
-    return [self.manager getAllItems];
+    return self.manager.allItems;
 }
 
 - (NSArray *)getCheckItems {

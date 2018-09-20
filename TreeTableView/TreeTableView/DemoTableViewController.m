@@ -84,7 +84,7 @@
         MYTreeItem *provinceItem = [[MYTreeItem alloc] initWithName:province[@"name"]
                                                                  ID:province[@"code"]
                                                            parentID:nil
-                                                            orderNo:[NSString stringWithFormat:@"%ld", idx]
+                                                            orderNo:[NSString stringWithFormat:@"%lu", (unsigned long)idx]
                                                                type:@"province"
                                                              isLeaf:NO
                                                                data:province];
@@ -97,7 +97,7 @@
             MYTreeItem *cityItem = [[MYTreeItem alloc] initWithName:city[@"name"]
                                                                  ID:city[@"code"]
                                                            parentID:provinceItem.ID
-                                                            orderNo:[NSString stringWithFormat:@"%ld", idx]
+                                                            orderNo:[NSString stringWithFormat:@"%lu", (unsigned long)idx]
                                                                type:@"city"
                                                              isLeaf:NO
                                                                data:city];
@@ -110,7 +110,7 @@
                 MYTreeItem *districtItem = [[MYTreeItem alloc] initWithName:district[@"name"]
                                                                          ID:district[@"code"]
                                                                    parentID:cityItem.ID
-                                                                    orderNo:[NSString stringWithFormat:@"%ld", idx]
+                                                                    orderNo:[NSString stringWithFormat:@"%lu", (unsigned long)idx]
                                                                        type:@"district"
                                                                      isLeaf:YES
                                                                        data:district];

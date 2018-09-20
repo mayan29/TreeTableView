@@ -22,11 +22,11 @@
     
     self = [super init];
     if (self) {
-        _name       = name;
-        _ID         = ID;
-        _parentID   = parentID;
-        _orderNo    = orderNo;
-        _type       = type;
+        _name       = [NSString stringWithFormat:@"%@", name];
+        _ID         = [NSString stringWithFormat:@"%@", ID];
+        _parentID   = [NSString stringWithFormat:@"%@", parentID];
+        _orderNo    = [NSString stringWithFormat:@"%@", orderNo];
+        _type       = [NSString stringWithFormat:@"%@", type];
         _isLeaf     = isLeaf;
         _data       = data;
         

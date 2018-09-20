@@ -27,12 +27,12 @@ typedef NS_ENUM(NSUInteger, MYTreeItemCheckState) {
 @property (nonatomic, readonly, assign) BOOL isLeaf;       // 是否叶子节点
 @property (nonatomic, readonly, strong) id data;           // 原始数据
 
+// 下列数据为 MYTreeTableManager 中内部设置，不能在外部直接设置
 @property (nonatomic, assign) NSUInteger level;
-@property (nonatomic, assign) MYTreeItemCheckState checkState;  // 勾选状态
-@property (nonatomic, assign) BOOL isExpand;  // 是否为展开状态
+@property (nonatomic, assign) BOOL isExpand;
+@property (nonatomic, assign) MYTreeItemCheckState checkState;
 @property (nonatomic, weak)   MYTreeItem *parentItem;
 @property (nonatomic, strong) NSMutableArray<MYTreeItem *> *childItems;
-
 
 
 /** 初始化 */

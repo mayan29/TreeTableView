@@ -141,6 +141,10 @@
     }
 }
 
+- (MYTreeItem *)getItemById:(NSString *)itemId {
+    return self.itemsMap[itemId];
+}
+
 
 #pragma mark - Expand Item
 
