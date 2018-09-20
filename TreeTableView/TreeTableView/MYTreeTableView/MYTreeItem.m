@@ -11,7 +11,6 @@
 
 @implementation MYTreeItem
 
-
 - (instancetype)initWithName:(NSString *)name
                           ID:(NSString *)ID
                     parentID:(NSString *)parentID
@@ -19,7 +18,6 @@
                         type:(NSString *)type
                       isLeaf:(BOOL)isLeaf
                         data:(id)data {
-    
     self = [super init];
     if (self) {
         _name       = [NSString stringWithFormat:@"%@", name];
@@ -29,7 +27,6 @@
         _type       = [NSString stringWithFormat:@"%@", type];
         _isLeaf     = isLeaf;
         _data       = data;
-        
         _level      = 0;
         _isExpand   = NO;
         _checkState = MYTreeItemDefault;

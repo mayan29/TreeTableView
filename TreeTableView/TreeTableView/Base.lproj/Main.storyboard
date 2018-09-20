@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="F3T-Kc-VAp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="F3T-Kc-VAp">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -38,7 +38,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="是否单选" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="urn-I2-AM0">
-                                <rect key="frame" x="10" y="243" width="296" height="20"/>
+                                <rect key="frame" x="10" y="243.5" width="296" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -47,7 +47,7 @@
                                 <rect key="frame" x="316" y="156" width="51" height="31"/>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="是否显示箭头" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHs-8i-h8T">
-                                <rect key="frame" x="10" y="161" width="296" height="20.5"/>
+                                <rect key="frame" x="10" y="161.5" width="296" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -56,7 +56,7 @@
                                 <rect key="frame" x="316" y="197" width="51" height="31"/>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="是否显示勾选框" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y8M-ca-NwW">
-                                <rect key="frame" x="10" y="202" width="296" height="20.5"/>
+                                <rect key="frame" x="10" y="202.5" width="296" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -77,7 +77,7 @@
                                 <rect key="frame" x="316" y="361" width="51" height="31"/>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="是否显示搜索框" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fr7-xY-KlD">
-                                <rect key="frame" x="10" y="366" width="296" height="20.5"/>
+                                <rect key="frame" x="10" y="366.5" width="296" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -86,7 +86,7 @@
                                 <rect key="frame" x="316" y="402" width="51" height="31"/>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="是否实时查询" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4Y-1e-FsR">
-                                <rect key="frame" x="10" y="407" width="296" height="20.5"/>
+                                <rect key="frame" x="10" y="407.5" width="296" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -180,17 +180,17 @@
                     <navigationItem key="navigationItem" id="FTK-Wm-x4A">
                         <barButtonItem key="rightBarButtonItem" title="进入列表" id="gnY-6Z-WSP">
                             <connections>
-                                <action selector="gotoTreeTableViewController:" destination="68c-l8-l2I" id="d18-3s-hFG"/>
+                                <action selector="pushTreeTableViewController" destination="68c-l8-l2I" id="xIl-Yw-S3u"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="isCancelSingleCheckSwitch" destination="IBI-I8-OmP" id="UdZ-mI-ScU"/>
-                        <outlet property="isRealTimeSearchSwitch" destination="KYT-ka-NVf" id="1S2-TC-gkF"/>
+                        <outlet property="isSearchRealTimeSwitch" destination="KYT-ka-NVf" id="rOQ-Gb-6Du"/>
                         <outlet property="isShowArrowIfNoChildNodeSwitch" destination="DYO-NF-FJQ" id="b8V-0V-Z8T"/>
                         <outlet property="isShowArrowSwitch" destination="wjT-Qm-Jnf" id="7vh-do-tBP"/>
                         <outlet property="isShowCheckSwitch" destination="t6r-DK-qwU" id="Y6O-Qh-bsi"/>
-                        <outlet property="isShowExpandAnimation" destination="fVS-qU-2tu" id="TR5-fx-KWa"/>
+                        <outlet property="isShowExpandedAnimationSwitch" destination="fVS-qU-2tu" id="ePM-NG-sBH"/>
                         <outlet property="isShowLevelColorSwitch" destination="yyc-R8-qRb" id="gXE-HJ-evX"/>
                         <outlet property="isShowSearchBarSwitch" destination="HtA-dk-E0C" id="2T5-de-f9T"/>
                         <outlet property="isSingleCheckSwitch" destination="paS-Q5-gIS" id="scV-OM-zZV"/>

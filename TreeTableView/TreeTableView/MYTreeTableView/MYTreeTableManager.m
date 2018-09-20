@@ -12,7 +12,7 @@
 
 @interface MYTreeTableManager ()
 
-@property (nonatomic, strong) NSDictionary *itemsMap;
+@property (nonatomic, strong) NSDictionary<NSString *, MYTreeItem *> *itemsMap;
 @property (nonatomic, strong) NSMutableArray <MYTreeItem *>*topItems;
 @property (nonatomic, strong) NSMutableArray <MYTreeItem *>*tmpItems;
 @property (nonatomic, assign) NSInteger maxLevel;   // 获取最大等级
@@ -25,7 +25,7 @@
 
 #pragma mark - Init
 
-- (instancetype)initWithItems:(NSArray<MYTreeItem *> *)items andExpandLevel:(NSInteger)level
+- (instancetype)initWithItems:(NSSet<MYTreeItem *> *)items andExpandLevel:(NSInteger)level
 {
     self = [super init];
     if (self) {
@@ -46,7 +46,7 @@
 }
 
 // 建立 MAP
-- (void)setupItemsMapByItems:(NSArray *)items {
+- (void)setupItemsMapByItems:(NSSet *)items {
     
     NSMutableDictionary *itemsMap = [NSMutableDictionary dictionary];
     for (MYTreeItem *item in items) {
@@ -80,17 +80,17 @@
         }
     }
     
+    // 顶级节点排序
+    self.topItems = [topItems sortedArrayUsingComparator:^NSComparisonResult(MYTreeItem *obj1, MYTreeItem *obj2) {
+        return [obj1.orderNo compare:obj2.orderNo];
+    }].mutableCopy;
+    
     // 所有 item 排序
     for (MYTreeItem *item in self.tmpItems) {
         item.childItems = [item.childItems sortedArrayUsingComparator:^NSComparisonResult(MYTreeItem *obj1, MYTreeItem *obj2) {
             return [obj1.orderNo compare:obj2.orderNo];
         }].mutableCopy;
     }
-    
-    // 顶级节点排序
-    self.topItems = [topItems sortedArrayUsingComparator:^NSComparisonResult(MYTreeItem *obj1, MYTreeItem *obj2) {
-        return [obj1.orderNo compare:obj2.orderNo];
-    }].mutableCopy;    
 }
 
 // 设置等级
@@ -139,10 +139,6 @@
             [self addItem:childItem toShowItems:showItems andAllowShowLevel:level];
         }
     }
-}
-
-- (MYTreeItem *)getItemById:(NSString *)itemId {
-    return self.itemsMap[itemId];
 }
 
 
@@ -430,11 +426,13 @@
 #pragma mark - Other
 
 // 根据 id 获取 item
-- (MYTreeItem *)getItemWithItemId:(NSNumber *)itemId {
-    
-    if (!itemId) return nil;
-    
-    return self.itemsMap[itemId];
+- (MYTreeItem *)getItemById:(NSString *)itemId {
+   
+    if (itemId) {
+        return self.itemsMap[itemId];
+    } else {
+        return nil;
+    }
 }
 
 // 获取该 item 下面所有子 item

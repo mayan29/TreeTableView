@@ -216,7 +216,7 @@
         [editIndexPaths addObjectsFromArray:tmp];
     }
     
-    if (self.isShowExpandAnimation) {
+    if (self.isShowExpandedAnimation) {
         if (isExpand) {
             [tableView insertRowsAtIndexPaths:editIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
         } else {
@@ -234,13 +234,15 @@
 
 - (void)initialization {
     
-    self.isSingleCheck         = NO;
-    self.isShowArrow           = YES;
-    self.isShowCheck           = YES;
-    self.isShowLevelColor      = NO;
-    self.isShowSearchBar       = YES;
-    self.isRealTimeSearch      = YES;
-    self.isShowExpandAnimation = YES;
+    self.isShowExpandedAnimation   = YES;
+    self.isShowArrowIfNoChildNode  = NO;
+    self.isShowArrow               = YES;
+    self.isShowCheck               = YES;
+    self.isSingleCheck             = NO;
+    self.isCancelSingleCheckSwitch = NO;
+    self.isShowLevelColor          = YES;
+    self.isShowSearchBar           = YES;
+    self.isSearchRealTime          = YES;
     
     self.normalBackgroundColor = [UIColor whiteColor];
     self.levelColorArray = @[[self getColorWithRed:230 green:230 blue:230],

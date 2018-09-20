@@ -76,7 +76,7 @@
     NSData *JSONData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"cityResource" ofType:@"json"]];
     NSArray *provinceArray = [NSJSONSerialization JSONObjectWithData:JSONData options:NSJSONReadingAllowFragments error:nil];
 
-    NSMutableArray *items = [NSMutableArray array];
+    NSMutableSet *items = [NSMutableSet set];
 
     // 1. 遍历省份
     [provinceArray enumerateObjectsUsingBlock:^(NSDictionary *province, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -140,12 +140,10 @@
 }
 
 - (void)tableViewController:(MYTreeTableViewController *)tableViewController didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     NSLog(@"点击了第 %ld 行", (long)indexPath.row);
 }
 
 - (void)tableViewController:(MYTreeTableViewController *)tableViewController didSelectCheckBoxRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     NSLog(@"点击了第 %ld 行的 checkbox", (long)indexPath.row);
 }
 

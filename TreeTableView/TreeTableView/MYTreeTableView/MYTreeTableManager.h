@@ -13,7 +13,7 @@
 @interface MYTreeTableManager : NSObject
 
 /** 初始化，ExpandLevel 为 0 全部折叠，为 1 展开一级，以此类推，为 NSIntegerMax 全部展开 */
-- (instancetype)initWithItems:(NSArray<MYTreeItem *> *)items andExpandLevel:(NSInteger)level;
+- (instancetype)initWithItems:(NSSet<MYTreeItem *> *)items andExpandLevel:(NSInteger)level;
 
 /** 获取所有的 items */
 @property (nonatomic, strong, readonly) NSMutableArray<MYTreeItem *> *allItems;
