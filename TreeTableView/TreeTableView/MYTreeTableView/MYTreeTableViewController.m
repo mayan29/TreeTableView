@@ -14,8 +14,9 @@
 
 @interface MYTreeTableViewController () <MYTreeTableViewSearchBarDelegate>
 
-@property (nonatomic, strong) MYTreeTableManager *manager;
-@property (nonatomic, strong) UIRefreshControl   *myRefreshControl;
+@property (nonatomic, strong) MYTreeTableViewSearchBar *searchBar;
+@property (nonatomic, strong) MYTreeTableManager       *manager;
+@property (nonatomic, strong) UIRefreshControl         *myRefreshControl;
 
 @end
 
@@ -40,12 +41,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.searchBar = [[MYTreeTableViewSearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 40)];
+    self.searchBar.delegate = self;
+    
     self.myRefreshControl = [[UIRefreshControl alloc] init];
     self.myRefreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"下拉刷新"];
     [self.myRefreshControl addTarget:self action:@selector(refreshData) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.myRefreshControl];
     
-    self.tableView.tableHeaderView = self.isShowSearchBar ? [self getSearchBar] : nil;
     self.tableView.tableFooterView = [[UIView alloc] init];
 }
 
@@ -80,6 +83,10 @@
 
 
 #pragma mark - UITableViewDelegate and UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.manager.showItems.count;
@@ -133,6 +140,14 @@
     return cell;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    return self.isShowSearchBar ? self.searchBar : [[UIView alloc] init];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return self.isShowSearchBar ? self.searchBar.bounds.size.height : 0;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     MYTreeItem *item = self.manager.showItems[indexPath.row];
@@ -151,25 +166,22 @@
 
 #pragma mark - MYSearchTextFieldDelegate
 
-/** 点击 search 键 */
-- (void)treeTableViewSearchBarShouldReturn:(MYTreeTableViewSearchBar *)searchBar {
-   
-    [searchBar resignFirstResponder];
+// 点击搜索框 - 用于埋点
+- (void)treeTableViewSearchBarDidBeginEditing:(MYTreeTableViewSearchBar *)searchBar {
+    if ([self.classDelegate respondsToSelector:@selector(searchBarDidBeginEditingInTableViewController:)]) {
+        [self.classDelegate searchBarDidBeginEditingInTableViewController:self];
+    }
 }
 
-/** 实时查询搜索框中的文字 */
-- (void)treeTableViewSearchBarEditingChanged:(MYTreeTableViewSearchBar *)searchBar {
-    
+// 实时查询搜索框中的文字
+- (void)treeTableViewSearchBarDidEditing:(MYTreeTableViewSearchBar *)searchBar {
     [self.manager filterField:searchBar.text];
     [self.tableView reloadData];
 }
 
-/** 监控点击搜索框，埋点用 */
-- (void)treeTableViewSearchBarShouldBeginEditing:(MYTreeTableViewSearchBar *)searchBar {
-    
-    if ([self.classDelegate respondsToSelector:@selector(searchBarShouldBeginEditingInTableViewController:)]) {
-        [self.classDelegate searchBarShouldBeginEditingInTableViewController:self];
-    }
+// 点击搜索键
+- (void)treeTableViewSearchBarShouldReturn:(MYTreeTableViewSearchBar *)searchBar {
+    [searchBar resignFirstResponder];
 }
 
 
@@ -187,14 +199,6 @@
 
 - (UIColor *)getColorWithRed:(NSInteger)redNum green:(NSInteger)greenNum blue:(NSInteger)blueNum {
     return [UIColor colorWithRed:redNum/255.0 green:greenNum/255.0 blue:blueNum/255.0 alpha:1.0];
-}
-
-- (MYTreeTableViewSearchBar *)getSearchBar {
-    
-    MYTreeTableViewSearchBar *searchBar = [[MYTreeTableViewSearchBar alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 40)];
-    searchBar.delegate = self;
-
-    return searchBar;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectItems:(NSArray <MYTreeItem *>*)items isExpand:(BOOL)isExpand {

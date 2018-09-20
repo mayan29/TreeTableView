@@ -34,7 +34,7 @@
 - (IBAction)gotoTreeTableViewController:(UIBarButtonItem *)sender {
     
     // 这里的个性化设置也可以移到 DemoTableViewController 中的 viewDidLoad 执行
-    DemoTableViewController *vc = [[DemoTableViewController alloc] init];
+    DemoTableViewController *vc = [[DemoTableViewController alloc] initWithStyle:UITableViewStylePlain];
     vc.delegate                  = self;
     vc.isSingleCheck             = self.isSingleCheckSwitch.isOn;
     vc.isCancelSingleCheckSwitch = self.isCancelSingleCheckSwitch.isOn;

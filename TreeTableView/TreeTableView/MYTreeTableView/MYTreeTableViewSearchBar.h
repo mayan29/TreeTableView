@@ -14,22 +14,20 @@
 @class MYTreeTableViewSearchBar;
 @protocol MYTreeTableViewSearchBarDelegate <NSObject>
 
-/** 点击 search 键 */
+/** 点击搜索框 - 用于埋点 */
+- (void)treeTableViewSearchBarDidBeginEditing:(MYTreeTableViewSearchBar *)searchBar;
+/** 点击搜索键 */
 - (void)treeTableViewSearchBarShouldReturn:(MYTreeTableViewSearchBar *)searchBar;
 /** 实时查询搜索框中的文字 */
-- (void)treeTableViewSearchBarEditingChanged:(MYTreeTableViewSearchBar *)searchBar;
-/** 监控点击搜索框，埋点用 */
-- (void)treeTableViewSearchBarShouldBeginEditing:(MYTreeTableViewSearchBar *)searchBar;
+- (void)treeTableViewSearchBarDidEditing:(MYTreeTableViewSearchBar *)searchBar;
 
 @end
 
 
 @interface MYTreeTableViewSearchBar : UIView
 
-@property (nonatomic, weak) id <MYTreeTableViewSearchBarDelegate> delegate;
-/** 设置文字 */
-@property (nonatomic, copy) NSString *text;
-/** 落下键盘 */
-- (void)resignFirstResponder;
+@property (nonatomic, weak) id<MYTreeTableViewSearchBarDelegate> delegate;
+@property (nonatomic, copy, readonly) NSString *text;  // 获取当前搜索框中的文字
+- (void)resignFirstResponder;  // 落下键盘
 
 @end

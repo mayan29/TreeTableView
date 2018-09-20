@@ -135,8 +135,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)searchBarShouldBeginEditingInTableViewController:(MYTreeTableViewController *)tableViewController {
-    
+- (void)searchBarDidBeginEditingInTableViewController:(MYTreeTableViewController *)tableViewController {
     NSLog(@"点击了搜索栏");
 }
 
