@@ -69,7 +69,7 @@
             for (NSString *itemId in self.checkItemIds) {
                 MYTreeItem *item = [self.manager getItemById:itemId];
                 if (item) {
-                    [self.manager checkItem:item isCheck:YES];
+                    [self.manager checkItem:item isCheck:YES isChildItemCheck:!self.isSingleCheck];
                 }
             }
         }
@@ -128,7 +128,7 @@
                 }
             }
         } else {
-            [wself.manager checkItem:item];
+            [wself.manager checkItem:item isChildItemCheck:self.isSingleCheck];
         }
         
         if ([wself.classDelegate respondsToSelector:@selector(tableViewController:didSelectCheckBoxRowAtIndexPath:)]) {

@@ -29,10 +29,8 @@
 - (NSInteger)expandItem:(MYTreeItem *)item isExpand:(BOOL)isExpand;
 
 /** 勾选/取消勾选 Item */
-- (void)checkItem:(MYTreeItem *)item;
-- (void)checkItem:(MYTreeItem *)item isCheck:(BOOL)isCheck;
-//- (void)checkItem:(MYTreeItem *)item andIsChangeChildItem:(BOOL)isChangeChildItem;
-//- (void)checkItem:(MYTreeItem *)item isCheck:(BOOL)isCheck andIsChangeChildItem:(BOOL)isChangeChildItem;
+- (void)checkItem:(MYTreeItem *)item isChildItemCheck:(BOOL)isChildItemCheck;
+- (void)checkItem:(MYTreeItem *)item isCheck:(BOOL)isCheck isChildItemCheck:(BOOL)isChildItemCheck;
 /** 全部勾选/全部取消勾选 */
 - (void)checkAllItem:(BOOL)isCheck;
 /** 获取所有已经勾选的 Item */

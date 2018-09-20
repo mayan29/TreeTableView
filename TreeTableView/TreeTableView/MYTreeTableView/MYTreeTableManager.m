@@ -66,16 +66,13 @@
         
         item.isExpand = NO;
         
-        if ([item.parentID isKindOfClass:[NSString class]]) {
-            MYTreeItem *parent = self.itemsMap[item.parentID];
-            if (parent) {
-                item.parentItem = parent;
-                if (![parent.childItems containsObject:item]) {
-                    [parent.childItems addObject:item];
-                }
+        MYTreeItem *parent = self.itemsMap[item.parentID];
+        if (parent) {
+            item.parentItem = parent;
+            if (![parent.childItems containsObject:item]) {
+                [parent.childItems addObject:item];
             }
-        }
-        if (!item.parentItem) {
+        } else {
             [topItems addObject:item];
         }
     }
@@ -251,27 +248,29 @@
 #pragma mark - Check Item
 
 // 勾选/取消勾选 Item
-- (void)checkItem:(MYTreeItem *)item {
-    [self checkItem:item isCheck:!(item.checkState == MYTreeItemChecked)];
+- (void)checkItem:(MYTreeItem *)item isChildItemCheck:(BOOL)isChildItemCheck {
+    [self checkItem:item isCheck:!(item.checkState == MYTreeItemChecked) isChildItemCheck:isChildItemCheck];
 }
 
-- (void)checkItem:(MYTreeItem *)item isCheck:(BOOL)isCheck {
+- (void)checkItem:(MYTreeItem *)item isCheck:(BOOL)isCheck isChildItemCheck:(BOOL)isChildItemCheck {
     
     if (item.checkState == MYTreeItemChecked && isCheck) return;
     if (item.checkState == MYTreeItemDefault && !isCheck) return;
     
     // 勾选/取消勾选所有子 item
-    [self checkChildItemWithItem:item isCheck:isCheck];
+    [self checkChildItemWithItem:item isCheck:isCheck isChildItemCheck:isChildItemCheck];
     // 刷新父 item 勾选状态
     [self refreshParentItemWithItem:item];
 }
 // 递归，勾选/取消勾选子 item
-- (void)checkChildItemWithItem:(MYTreeItem *)item isCheck:(BOOL)isCheck {
+- (void)checkChildItemWithItem:(MYTreeItem *)item isCheck:(BOOL)isCheck isChildItemCheck:(BOOL)isChildItemCheck {
     
     item.checkState = isCheck ? MYTreeItemChecked : MYTreeItemDefault;
     
+    if (!isChildItemCheck) return;
+    
     for (MYTreeItem *tmpItem in item.childItems) {
-        [self checkChildItemWithItem:tmpItem isCheck:isCheck];
+        [self checkChildItemWithItem:tmpItem isCheck:isCheck isChildItemCheck:isChildItemCheck];
     }
 }
 // 递归，刷新父 item 勾选状态
@@ -315,7 +314,7 @@
     for (MYTreeItem *item in _showItems) {
         // 防止重复遍历
         if (item.level == 0) {
-            [self checkChildItemWithItem:item isCheck:isCheck];
+            [self checkChildItemWithItem:item isCheck:isCheck isChildItemCheck:YES];
         }
     }
 }
