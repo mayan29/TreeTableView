@@ -260,51 +260,60 @@
     // 勾选/取消勾选所有子 item
     [self checkChildItemWithItem:item isCheck:isCheck isChildItemCheck:isChildItemCheck];
     // 刷新父 item 勾选状态
-    [self refreshParentItemWithItem:item];
+    [self refreshParentItemWithItem:item isChildItemCheck:isChildItemCheck];
 }
 // 递归，勾选/取消勾选子 item
 - (void)checkChildItemWithItem:(MYTreeItem *)item isCheck:(BOOL)isCheck isChildItemCheck:(BOOL)isChildItemCheck {
     
     item.checkState = isCheck ? MYTreeItemChecked : MYTreeItemDefault;
     
-    if (!isChildItemCheck) return;
-    
     for (MYTreeItem *tmpItem in item.childItems) {
-        [self checkChildItemWithItem:tmpItem isCheck:isCheck isChildItemCheck:isChildItemCheck];
+        // 如果是多选，勾选了 item 可以作用于子 item
+        if (isChildItemCheck) {
+            [self checkChildItemWithItem:tmpItem isCheck:isCheck isChildItemCheck:isChildItemCheck];
+        } else {
+            [self checkChildItemWithItem:tmpItem isCheck:NO isChildItemCheck:isChildItemCheck];
+        }
     }
 }
 // 递归，刷新父 item 勾选状态
-- (void)refreshParentItemWithItem:(MYTreeItem *)item {
+- (void)refreshParentItemWithItem:(MYTreeItem *)item isChildItemCheck:(BOOL)isChildItemCheck {
     
-    NSInteger defaultNum = 0;
-    NSInteger checkedNum = 0;
-    
-    for (MYTreeItem *tmpItem in item.parentItem.childItems) {
+    if (isChildItemCheck) {
         
-        switch (tmpItem.checkState) {
-            case MYTreeItemDefault:
-                defaultNum++;
-                break;
-            case MYTreeItemChecked:
-                checkedNum++;
-                break;
-            case MYTreeItemHalfChecked:
-                break;
+        NSInteger defaultNum = 0;
+        NSInteger checkedNum = 0;
+        
+        for (MYTreeItem *tmpItem in item.parentItem.childItems) {
+            
+            switch (tmpItem.checkState) {
+                case MYTreeItemDefault:
+                    defaultNum++;
+                    break;
+                case MYTreeItemChecked:
+                    checkedNum++;
+                    break;
+                case MYTreeItemHalfChecked:
+                    break;
+            }
         }
-    }
-    
-    if (defaultNum == item.parentItem.childItems.count) {
+        
+        if (defaultNum == item.parentItem.childItems.count) {
+            item.parentItem.checkState = MYTreeItemDefault;
+        }
+        else if (checkedNum == item.parentItem.childItems.count) {
+            item.parentItem.checkState = MYTreeItemChecked;
+        }
+        else {
+            item.parentItem.checkState = MYTreeItemHalfChecked;
+        }
+        
+    } else {
         item.parentItem.checkState = MYTreeItemDefault;
-    }
-    else if (checkedNum == item.parentItem.childItems.count) {
-        item.parentItem.checkState = MYTreeItemChecked;
-    }
-    else {
-        item.parentItem.checkState = MYTreeItemHalfChecked;
     }
     
     if (item.parentItem) {
-        [self refreshParentItemWithItem:item.parentItem];
+        [self refreshParentItemWithItem:item.parentItem isChildItemCheck:isChildItemCheck];
     }
 }
 
@@ -348,7 +357,7 @@
 #pragma mark - Filter Item
 
 // 筛选
-- (void)filterField:(NSString *)field {
+- (void)filterField:(NSString *)field isChildItemCheck:(BOOL)isChildItemCheck {
     
     [self setupTopItemsWithFilterField:field];
     
@@ -400,7 +409,7 @@
     // 刷新勾选状态
     for (MYTreeItem *item in self.tmpItems) {
         // 刷新父 item 勾选状态
-        [self refreshParentItemWithItem:item];
+        [self refreshParentItemWithItem:item isChildItemCheck:isChildItemCheck];
     }
 }
 - (void)addItem:(MYTreeItem *)item toShowItems:(NSMutableArray *)showItems {

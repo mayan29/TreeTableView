@@ -110,24 +110,27 @@
     __weak typeof(self)wself = self;
     cell.checkButtonClickBlock = ^(MYTreeItem *item) {
         
-        // 如果是单选，除了勾选之外，还需把勾选的 item 传出去
+        // 单选
         if (wself.isSingleCheck) {
+            // 如果再次点击已经选中的 item 则取消选择
             if (wself.isCancelSingleCheckSwitch && (item.checkState == MYTreeItemChecked)) {
                 
-                item.checkState = MYTreeItemDefault;
+                [wself.manager checkItem:item isCheck:NO isChildItemCheck:NO];
                 
                 if ([wself.classDelegate respondsToSelector:@selector(tableViewController:checkItems:)]) {
                     [wself.classDelegate tableViewController:wself checkItems:@[]];
                 }
             } else {
                 
-                item.checkState = MYTreeItemChecked;
+                [wself.manager checkItem:item isCheck:YES isChildItemCheck:NO];
                 
                 if ([wself.classDelegate respondsToSelector:@selector(tableViewController:checkItems:)]) {
                     [wself.classDelegate tableViewController:wself checkItems:@[item]];
                 }
             }
-        } else {
+        }
+        // 多选
+        else {
             [wself.manager checkItem:item isChildItemCheck:self.isSingleCheck];
         }
         
@@ -175,7 +178,7 @@
 
 // 实时查询搜索框中的文字
 - (void)treeTableViewSearchBarDidEditing:(MYTreeTableViewSearchBar *)searchBar {
-    [self.manager filterField:searchBar.text];
+    [self.manager filterField:searchBar.text isChildItemCheck:!self.isSingleCheck];
     [self.tableView reloadData];
 }
 

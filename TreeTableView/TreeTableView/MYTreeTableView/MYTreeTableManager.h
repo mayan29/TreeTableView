@@ -37,7 +37,7 @@
 - (NSArray <MYTreeItem *>*)getAllCheckItem;
 
 /** 筛选 */
-- (void)filterField:(NSString *)field;
+- (void)filterField:(NSString *)field isChildItemCheck:(BOOL)isChildItemCheck;
 
 
 @end
