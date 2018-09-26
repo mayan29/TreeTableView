@@ -131,7 +131,7 @@
         }
         // 多选
         else {
-            [wself.manager checkItem:item isChildItemCheck:self.isSingleCheck];
+            [wself.manager checkItem:item isChildItemCheck:YES];
         }
         
         if ([wself.classDelegate respondsToSelector:@selector(tableViewController:didSelectCheckBoxRowAtIndexPath:)]) {
