@@ -15,8 +15,7 @@
 @interface MYTreeTableViewController () <MYTreeTableViewSearchBarDelegate>
 
 @property (nonatomic, strong) MYTreeTableViewSearchBar *searchBar;
-@property (nonatomic, strong) MYTreeTableManager       *manager;
-@property (nonatomic, strong) UIRefreshControl         *myRefreshControl;
+@property (nonatomic, strong) UIRefreshControl *myRefreshControl;
 
 @end
 
@@ -52,32 +51,50 @@
     self.tableView.tableFooterView = [[UIView alloc] init];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self refreshData];
+- (void)refreshData {
+    
+    if ([self.classDelegate respondsToSelector:@selector(refreshTableViewController:)]) {
+        [self.classDelegate refreshTableViewController:self];
+    }
+    
+    [self.tableView reloadData];
+    [self.myRefreshControl endRefreshing];
 }
 
-- (void)refreshData {
-        
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        
-        if ([self.classDelegate respondsToSelector:@selector(managerInTableViewController:)]) {
+
+#pragma mark - Set
+
+- (void)setManager:(MYTreeTableManager *)manager {
+    _manager = manager;
+    
+    // 遍历外部传来的所选择的 itemId
+    for (NSString *itemId in self.checkItemIds) {
+        MYTreeItem *item = [self.manager getItemById:itemId];
+        if (item) {
             
-            self.manager = [self.classDelegate managerInTableViewController:self];
+            // 1. 勾选所选择的节点
+            [self.manager checkItem:item isCheck:YES isChildItemCheck:!self.isSingleCheck];
             
-            // 遍历外部传来的所选择的 itemId
-            for (NSString *itemId in self.checkItemIds) {
-                MYTreeItem *item = [self.manager getItemById:itemId];
-                if (item) {
-                    [self.manager checkItem:item isCheck:YES isChildItemCheck:!self.isSingleCheck];
+            // 2. 展开所选择的节点
+            if (self.isExpandCheckedNode) {
+                
+                NSMutableArray *expandParentItems = [NSMutableArray array];
+                
+                MYTreeItem *parentItem = item.parentItem;
+                while (parentItem) {
+                    [expandParentItems addObject:parentItem];
+                    parentItem = parentItem.parentItem;
+                }
+                
+                for (NSUInteger i = (expandParentItems.count - 1); i < expandParentItems.count; i--) {
+                    [self.manager expandItem:expandParentItems[i] isExpand:YES];
                 }
             }
         }
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tableView reloadData];
-            [self.myRefreshControl endRefreshing];
-        });
+    }
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
     });
 }
 
@@ -113,7 +130,7 @@
         // 单选
         if (wself.isSingleCheck) {
             // 如果再次点击已经选中的 item 则取消选择
-            if (wself.isCancelSingleCheckSwitch && (item.checkState == MYTreeItemChecked)) {
+            if (wself.isCancelSingleCheck && (item.checkState == MYTreeItemChecked)) {
                 
                 [wself.manager checkItem:item isCheck:NO isChildItemCheck:NO];
                 
@@ -237,15 +254,16 @@
 
 - (void)initialization {
     
-    self.isShowExpandedAnimation   = YES;
-    self.isShowArrowIfNoChildNode  = NO;
-    self.isShowArrow               = YES;
-    self.isShowCheck               = YES;
-    self.isSingleCheck             = NO;
-    self.isCancelSingleCheckSwitch = NO;
-    self.isShowLevelColor          = YES;
-    self.isShowSearchBar           = YES;
-    self.isSearchRealTime          = YES;
+    self.isShowExpandedAnimation  = YES;
+    self.isShowArrowIfNoChildNode = NO;
+    self.isShowArrow              = YES;
+    self.isShowCheck              = YES;
+    self.isSingleCheck            = NO;
+    self.isCancelSingleCheck      = NO;
+    self.isExpandCheckedNode      = YES;
+    self.isShowLevelColor         = YES;
+    self.isShowSearchBar          = YES;
+    self.isSearchRealTime         = YES;
     
     self.normalBackgroundColor = [UIColor whiteColor];
     self.levelColorArray = @[[self getColorWithRed:230 green:230 blue:230],

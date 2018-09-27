@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UISwitch *isShowCheckSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *isSingleCheckSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *isCancelSingleCheckSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *isExpandCheckedNodeSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *isShowLevelColorSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *isShowSearchBarSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *isSearchRealTimeSwitch;
@@ -35,17 +36,18 @@
     
     // 这里的个性化设置也可以移到 DemoTableViewController 中的 viewDidLoad 执行
     DemoTableViewController *vc = [[DemoTableViewController alloc] initWithStyle:UITableViewStylePlain];
-    vc.delegate                  = self;
-    vc.isShowExpandedAnimation   = self.isShowExpandedAnimationSwitch.isOn;
-    vc.isShowArrowIfNoChildNode  = self.isShowArrowIfNoChildNodeSwitch.isOn;
-    vc.isShowArrow               = self.isShowArrowSwitch.isOn;
-    vc.isShowCheck               = self.isShowCheckSwitch.isOn;
-    vc.isSingleCheck             = self.isSingleCheckSwitch.isOn;
-    vc.isCancelSingleCheckSwitch = self.isCancelSingleCheckSwitch.isOn;
-    vc.isShowLevelColor          = self.isShowLevelColorSwitch.isOn;
-    vc.isShowSearchBar           = self.isShowSearchBarSwitch.isOn;
-    vc.isSearchRealTime          = self.isSearchRealTimeSwitch.isOn;
-    vc.checkItemIds              = [self getItemIds];
+    vc.delegate                 = self;
+    vc.isShowExpandedAnimation  = self.isShowExpandedAnimationSwitch.isOn;
+    vc.isShowArrowIfNoChildNode = self.isShowArrowIfNoChildNodeSwitch.isOn;
+    vc.isShowArrow              = self.isShowArrowSwitch.isOn;
+    vc.isShowCheck              = self.isShowCheckSwitch.isOn;
+    vc.isSingleCheck            = self.isSingleCheckSwitch.isOn;
+    vc.isCancelSingleCheck      = self.isCancelSingleCheckSwitch.isOn;
+    vc.isExpandCheckedNode      = self.isExpandCheckedNodeSwitch.isOn;
+    vc.isShowLevelColor         = self.isShowLevelColorSwitch.isOn;
+    vc.isShowSearchBar          = self.isShowSearchBarSwitch.isOn;
+    vc.isSearchRealTime         = self.isSearchRealTimeSwitch.isOn;
+    vc.checkItemIds             = [self getItemIds];
     
     [self.navigationController pushViewController:vc animated:YES];
 }

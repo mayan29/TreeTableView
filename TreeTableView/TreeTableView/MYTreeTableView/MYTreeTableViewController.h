@@ -16,8 +16,8 @@
 // 子类中实现的 delegate
 @protocol MYTreeTableViewControllerParentClassDelegate <NSObject>
 
-/** 获取数据，创建模型，创建 manager */
-- (MYTreeTableManager *)managerInTableViewController:(MYTreeTableViewController *)tableViewController;
+/** 下拉刷新后，传出刷新通知，在子类中刷新数据 */
+- (void)refreshTableViewController:(MYTreeTableViewController *)tableViewController;
 /** 如果是单选，点击 cell 会直接调用，如果是多选，通过 prepareCommit 方法会调用 */
 - (void)tableViewController:(MYTreeTableViewController *)tableViewController checkItems:(NSArray <MYTreeItem *>*)items;
 /** 监控点击搜索框，埋点用 */
@@ -42,15 +42,18 @@
 @property (nonatomic, weak) id<MYTreeTableViewControllerParentClassDelegate> classDelegate;
 @property (nonatomic, weak) id<MYTreeTableViewControllerDelegate> delegate;
 
-@property (nonatomic, assign) BOOL isShowExpandedAnimation;    // 是否显示展开/折叠动画，默认 YES
-@property (nonatomic, assign) BOOL isShowArrowIfNoChildNode;   // 是否没有子节点就不显示箭头，默认 NO
-@property (nonatomic, assign) BOOL isShowArrow;                // 是否显示文字前方的箭头图片，默认 YES
-@property (nonatomic, assign) BOOL isShowCheck;                // 是否显示文字后方的勾选框，默认 YES
-@property (nonatomic, assign) BOOL isSingleCheck;              // 是否是单选，默认 NO
-@property (nonatomic, assign) BOOL isCancelSingleCheckSwitch;  // 是否单选时再次点击取消选择，默认 NO
-@property (nonatomic, assign) BOOL isShowLevelColor;           // 是否展示层级颜色，默认 YES
-@property (nonatomic, assign) BOOL isShowSearchBar;            // 是否显示搜索框，默认 YES
-@property (nonatomic, assign) BOOL isSearchRealTime;           // 是否实时查询，默认 YES
+@property (nonatomic, strong) MYTreeTableManager *manager;
+
+@property (nonatomic, assign) BOOL isShowExpandedAnimation;   // 是否显示展开/折叠动画，默认 YES
+@property (nonatomic, assign) BOOL isShowArrowIfNoChildNode;  // 是否没有子节点就不显示箭头，默认 NO
+@property (nonatomic, assign) BOOL isShowArrow;               // 是否显示文字前方的箭头图片，默认 YES
+@property (nonatomic, assign) BOOL isShowCheck;               // 是否显示文字后方的勾选框，默认 YES
+@property (nonatomic, assign) BOOL isSingleCheck;             // 是否是单选，默认 NO
+@property (nonatomic, assign) BOOL isCancelSingleCheck;       // 是否单选时再次点击取消选择，默认 NO
+@property (nonatomic, assign) BOOL isExpandCheckedNode;       // 是否展开已选择的节点，默认 YES
+@property (nonatomic, assign) BOOL isShowLevelColor;          // 是否展示层级颜色，默认 YES
+@property (nonatomic, assign) BOOL isShowSearchBar;           // 是否显示搜索框，默认 YES
+@property (nonatomic, assign) BOOL isSearchRealTime;          // 是否实时查询，默认 YES
 
 @property (nonatomic, strong) NSArray <NSString *>*checkItemIds;    // 从外部传进来的所选择的 itemIds
 @property (nonatomic, strong) NSArray <UIColor *>*levelColorArray;  // 层级颜色，默认一级和二级分别为深灰色和浅灰色
