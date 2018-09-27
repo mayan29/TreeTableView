@@ -11,13 +11,8 @@
 
 @implementation MYTreeItem
 
-- (instancetype)initWithName:(NSString *)name
-                          ID:(NSString *)ID
-                    parentID:(NSString *)parentID
-                     orderNo:(NSString *)orderNo
-                        type:(NSString *)type
-                      isLeaf:(BOOL)isLeaf
-                        data:(id)data {
+- (instancetype)initWithName:(NSString *)name ID:(NSString *)ID parentID:(NSString *)parentID orderNo:(NSString *)orderNo type:(NSString *)type isLeaf:(BOOL)isLeaf data:(id)data {
+    
     self = [super init];
     if (self) {
         _name       = [NSString stringWithFormat:@"%@", name];

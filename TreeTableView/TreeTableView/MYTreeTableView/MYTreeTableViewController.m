@@ -201,6 +201,8 @@
 
 // 点击搜索键
 - (void)treeTableViewSearchBarShouldReturn:(MYTreeTableViewSearchBar *)searchBar {
+    [self.manager filterField:searchBar.text isChildItemCheck:!self.isSingleCheck];
+    [self.tableView reloadData];
     [searchBar resignFirstResponder];
 }
 
@@ -301,17 +303,12 @@
 }
 
 - (void)prepareCommit {
-    
-    // 所勾选的 items
-    NSArray *checkItems = [self.manager getAllCheckItem];
-    
     if ([self.classDelegate respondsToSelector:@selector(tableViewController:checkItems:)]) {
-        [self.classDelegate tableViewController:self checkItems:checkItems];
+        [self.classDelegate tableViewController:self checkItems:self.manager.allCheckItem];
     }
 }
 
 - (NSArray *)getShowItems {
-    
     return self.manager.showItems;
 }
 
@@ -320,7 +317,7 @@
 }
 
 - (NSArray *)getCheckItems {
-    return [self.manager getAllCheckItem];
+    return self.manager.allCheckItem;
 }
 
 

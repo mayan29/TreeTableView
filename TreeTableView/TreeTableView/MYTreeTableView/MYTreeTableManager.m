@@ -120,7 +120,6 @@
     _showItems = showItems;
 }
 
-
 - (void)addItem:(MYTreeItem *)item toShowItems:(NSMutableArray *)showItems andAllowShowLevel:(NSInteger)level {
     
     if (item.level <= level) {
@@ -328,31 +327,6 @@
     }
 }
 
-// 获取所有已经勾选的 Item
-- (NSArray <MYTreeItem *>*)getAllCheckItem {
-    
-    NSMutableArray *tmpArray = [NSMutableArray array];
-    
-    for (MYTreeItem *item in _showItems) {
-        // 防止重复遍历
-        if (item.level == 0) {
-            [self getAllCheckItem:tmpArray andItem:item];
-        }
-    }
-    
-    return tmpArray.copy;
-}
-// 递归，将已经勾选的 Item 添加到临时数组中
-- (void)getAllCheckItem:(NSMutableArray <MYTreeItem *>*)tmpArray andItem:(MYTreeItem *)tmpItem {
-    
-    if (tmpItem.checkState == MYTreeItemDefault) return;
-    if (tmpItem.checkState == MYTreeItemChecked) [tmpArray addObject:tmpItem];
-    
-    for (MYTreeItem *item in tmpItem.childItems) {
-        [self getAllCheckItem:tmpArray andItem:item];
-    }
-}
-
 
 #pragma mark - Filter Item
 
@@ -431,17 +405,45 @@
 }
 
 
-#pragma mark - Other
+#pragma mark - Get
 
 // 根据 id 获取 item
 - (MYTreeItem *)getItemById:(NSString *)itemId {
-   
+    
     if (itemId) {
         return self.itemsMap[itemId];
     } else {
         return nil;
     }
 }
+
+// 获取所有已经勾选的 item
+- (NSArray<MYTreeItem *> *)allCheckItem {
+    
+    NSMutableArray *tmpArray = [NSMutableArray array];
+    
+    for (MYTreeItem *item in _showItems) {
+        // 防止重复遍历
+        if (item.level == 0) {
+            [self getAllCheckItem:tmpArray andItem:item];
+        }
+    }
+    
+    return tmpArray.copy;
+}
+// 递归，将已经勾选的 Item 添加到临时数组中
+- (void)getAllCheckItem:(NSMutableArray <MYTreeItem *>*)tmpArray andItem:(MYTreeItem *)tmpItem {
+    
+    if (tmpItem.checkState == MYTreeItemDefault) return;
+    if (tmpItem.checkState == MYTreeItemChecked) [tmpArray addObject:tmpItem];
+    
+    for (MYTreeItem *item in tmpItem.childItems) {
+        [self getAllCheckItem:tmpArray andItem:item];
+    }
+}
+
+
+#pragma mark - Other
 
 // 获取该 item 下面所有子 item
 - (NSArray *)getAllChildItemsWithItem:(MYTreeItem *)item {
@@ -489,8 +491,5 @@
     return isContain;
 }
 
-- (NSArray *)getAllItems {
-    return [self.itemsMap allValues];
-}
 
 @end
