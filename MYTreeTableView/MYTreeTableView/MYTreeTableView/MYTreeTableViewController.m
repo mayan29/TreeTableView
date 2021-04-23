@@ -139,6 +139,7 @@
                 }
             } else {
                 
+                [wself.manager checkAllItem:NO];
                 [wself.manager checkItem:item isCheck:YES isChildItemCheck:NO];
                 
                 if ([wself.classDelegate respondsToSelector:@selector(tableViewController:checkItems:)]) {
