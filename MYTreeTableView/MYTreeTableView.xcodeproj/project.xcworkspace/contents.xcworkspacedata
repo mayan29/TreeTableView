@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:TreeTableView.xcodeproj">
+      location = "self:/Users/may-g/Desktop/GitHub/TreeTableView/TreeTableView/MYTreeTableView.xcodeproj">
    </FileRef>
 </Workspace>

@@ -13,8 +13,6 @@
 		BC03606C20A53BEE009CA1E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC03606B20A53BEE009CA1E4 /* Assets.xcassets */; };
 		BC03606F20A53BEE009CA1E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC03606D20A53BEE009CA1E4 /* LaunchScreen.storyboard */; };
 		BC03607220A53BEE009CA1E4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03607120A53BEE009CA1E4 /* main.m */; };
-		BC03607C20A53BEE009CA1E4 /* TreeTableViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03607B20A53BEE009CA1E4 /* TreeTableViewTests.m */; };
-		BC03608720A53BEE009CA1E4 /* TreeTableViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03608620A53BEE009CA1E4 /* TreeTableViewUITests.m */; };
 		BC0360AD20A53C68009CA1E4 /* MYTreeItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0360A420A53C68009CA1E4 /* MYTreeItem.m */; };
 		BC0360AE20A53C68009CA1E4 /* MYTreeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0360A520A53C68009CA1E4 /* MYTreeTableViewController.m */; };
 		BC0360AF20A53C68009CA1E4 /* MYTreeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0360A820A53C68009CA1E4 /* MYTreeTableViewCell.m */; };
@@ -33,19 +31,19 @@
 			containerPortal = BC03605720A53BEC009CA1E4 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = BC03605E20A53BEC009CA1E4;
-			remoteInfo = TreeTableView;
+			remoteInfo = MYTreeTableView;
 		};
 		BC03608320A53BEE009CA1E4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BC03605720A53BEC009CA1E4 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = BC03605E20A53BEC009CA1E4;
-			remoteInfo = TreeTableView;
+			remoteInfo = MYTreeTableView;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		BC03605F20A53BEC009CA1E4 /* TreeTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TreeTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC03605F20A53BEC009CA1E4 /* MYTreeTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MYTreeTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC03606220A53BEC009CA1E4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BC03606320A53BEC009CA1E4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		BC03606520A53BEC009CA1E4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -55,12 +53,8 @@
 		BC03606E20A53BEE009CA1E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BC03607020A53BEE009CA1E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC03607120A53BEE009CA1E4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		BC03607720A53BEE009CA1E4 /* TreeTableViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TreeTableViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC03607B20A53BEE009CA1E4 /* TreeTableViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TreeTableViewTests.m; sourceTree = "<group>"; };
-		BC03607D20A53BEE009CA1E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BC03608220A53BEE009CA1E4 /* TreeTableViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TreeTableViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC03608620A53BEE009CA1E4 /* TreeTableViewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TreeTableViewUITests.m; sourceTree = "<group>"; };
-		BC03608820A53BEE009CA1E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC03607720A53BEE009CA1E4 /* MYTreeTableViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MYTreeTableViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC03608220A53BEE009CA1E4 /* MYTreeTableViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MYTreeTableViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC0360A420A53C68009CA1E4 /* MYTreeItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYTreeItem.m; sourceTree = "<group>"; };
 		BC0360A520A53C68009CA1E4 /* MYTreeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYTreeTableViewController.m; sourceTree = "<group>"; };
 		BC0360A620A53C68009CA1E4 /* MYTreeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYTreeTableViewCell.h; sourceTree = "<group>"; };
@@ -108,9 +102,7 @@
 		BC03605620A53BEC009CA1E4 = {
 			isa = PBXGroup;
 			children = (
-				BC03606120A53BEC009CA1E4 /* TreeTableView */,
-				BC03607A20A53BEE009CA1E4 /* TreeTableViewTests */,
-				BC03608520A53BEE009CA1E4 /* TreeTableViewUITests */,
+				BC03606120A53BEC009CA1E4 /* MYTreeTableView */,
 				BC03606020A53BEC009CA1E4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -118,14 +110,14 @@
 		BC03606020A53BEC009CA1E4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BC03605F20A53BEC009CA1E4 /* TreeTableView.app */,
-				BC03607720A53BEE009CA1E4 /* TreeTableViewTests.xctest */,
-				BC03608220A53BEE009CA1E4 /* TreeTableViewUITests.xctest */,
+				BC03605F20A53BEC009CA1E4 /* MYTreeTableView.app */,
+				BC03607720A53BEE009CA1E4 /* MYTreeTableViewTests.xctest */,
+				BC03608220A53BEE009CA1E4 /* MYTreeTableViewUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BC03606120A53BEC009CA1E4 /* TreeTableView */ = {
+		BC03606120A53BEC009CA1E4 /* MYTreeTableView */ = {
 			isa = PBXGroup;
 			children = (
 				BC0360A320A53C68009CA1E4 /* MYTreeTableView */,
@@ -145,25 +137,7 @@
 				BCCB605120D3BCC5009D0466 /* cityResource.json */,
 				BC0360B520A53DFF009CA1E4 /* Resource.json */,
 			);
-			path = TreeTableView;
-			sourceTree = "<group>";
-		};
-		BC03607A20A53BEE009CA1E4 /* TreeTableViewTests */ = {
-			isa = PBXGroup;
-			children = (
-				BC03607B20A53BEE009CA1E4 /* TreeTableViewTests.m */,
-				BC03607D20A53BEE009CA1E4 /* Info.plist */,
-			);
-			path = TreeTableViewTests;
-			sourceTree = "<group>";
-		};
-		BC03608520A53BEE009CA1E4 /* TreeTableViewUITests */ = {
-			isa = PBXGroup;
-			children = (
-				BC03608620A53BEE009CA1E4 /* TreeTableViewUITests.m */,
-				BC03608820A53BEE009CA1E4 /* Info.plist */,
-			);
-			path = TreeTableViewUITests;
+			path = MYTreeTableView;
 			sourceTree = "<group>";
 		};
 		BC0360A320A53C68009CA1E4 /* MYTreeTableView */ = {
@@ -187,9 +161,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BC03605E20A53BEC009CA1E4 /* TreeTableView */ = {
+		BC03605E20A53BEC009CA1E4 /* MYTreeTableView */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BC03608B20A53BEE009CA1E4 /* Build configuration list for PBXNativeTarget "TreeTableView" */;
+			buildConfigurationList = BC03608B20A53BEE009CA1E4 /* Build configuration list for PBXNativeTarget "MYTreeTableView" */;
 			buildPhases = (
 				BC03605B20A53BEC009CA1E4 /* Sources */,
 				BC03605C20A53BEC009CA1E4 /* Frameworks */,
@@ -199,14 +173,14 @@
 			);
 			dependencies = (
 			);
-			name = TreeTableView;
+			name = MYTreeTableView;
 			productName = TreeTableView;
-			productReference = BC03605F20A53BEC009CA1E4 /* TreeTableView.app */;
+			productReference = BC03605F20A53BEC009CA1E4 /* MYTreeTableView.app */;
 			productType = "com.apple.product-type.application";
 		};
-		BC03607620A53BEE009CA1E4 /* TreeTableViewTests */ = {
+		BC03607620A53BEE009CA1E4 /* MYTreeTableViewTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BC03608E20A53BEE009CA1E4 /* Build configuration list for PBXNativeTarget "TreeTableViewTests" */;
+			buildConfigurationList = BC03608E20A53BEE009CA1E4 /* Build configuration list for PBXNativeTarget "MYTreeTableViewTests" */;
 			buildPhases = (
 				BC03607320A53BEE009CA1E4 /* Sources */,
 				BC03607420A53BEE009CA1E4 /* Frameworks */,
@@ -217,14 +191,14 @@
 			dependencies = (
 				BC03607920A53BEE009CA1E4 /* PBXTargetDependency */,
 			);
-			name = TreeTableViewTests;
+			name = MYTreeTableViewTests;
 			productName = TreeTableViewTests;
-			productReference = BC03607720A53BEE009CA1E4 /* TreeTableViewTests.xctest */;
+			productReference = BC03607720A53BEE009CA1E4 /* MYTreeTableViewTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		BC03608120A53BEE009CA1E4 /* TreeTableViewUITests */ = {
+		BC03608120A53BEE009CA1E4 /* MYTreeTableViewUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BC03609120A53BEE009CA1E4 /* Build configuration list for PBXNativeTarget "TreeTableViewUITests" */;
+			buildConfigurationList = BC03609120A53BEE009CA1E4 /* Build configuration list for PBXNativeTarget "MYTreeTableViewUITests" */;
 			buildPhases = (
 				BC03607E20A53BEE009CA1E4 /* Sources */,
 				BC03607F20A53BEE009CA1E4 /* Frameworks */,
@@ -235,9 +209,9 @@
 			dependencies = (
 				BC03608420A53BEE009CA1E4 /* PBXTargetDependency */,
 			);
-			name = TreeTableViewUITests;
+			name = MYTreeTableViewUITests;
 			productName = TreeTableViewUITests;
-			productReference = BC03608220A53BEE009CA1E4 /* TreeTableViewUITests.xctest */;
+			productReference = BC03608220A53BEE009CA1E4 /* MYTreeTableViewUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -246,7 +220,7 @@
 		BC03605720A53BEC009CA1E4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = mayan;
 				TargetAttributes = {
 					BC03605E20A53BEC009CA1E4 = {
@@ -262,7 +236,7 @@
 					};
 				};
 			};
-			buildConfigurationList = BC03605A20A53BEC009CA1E4 /* Build configuration list for PBXProject "TreeTableView" */;
+			buildConfigurationList = BC03605A20A53BEC009CA1E4 /* Build configuration list for PBXProject "MYTreeTableView" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -275,9 +249,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BC03605E20A53BEC009CA1E4 /* TreeTableView */,
-				BC03607620A53BEE009CA1E4 /* TreeTableViewTests */,
-				BC03608120A53BEE009CA1E4 /* TreeTableViewUITests */,
+				BC03605E20A53BEC009CA1E4 /* MYTreeTableView */,
+				BC03607620A53BEE009CA1E4 /* MYTreeTableViewTests */,
+				BC03608120A53BEE009CA1E4 /* MYTreeTableViewUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -334,7 +308,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC03607C20A53BEE009CA1E4 /* TreeTableViewTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,7 +315,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC03608720A53BEE009CA1E4 /* TreeTableViewUITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,12 +323,12 @@
 /* Begin PBXTargetDependency section */
 		BC03607920A53BEE009CA1E4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BC03605E20A53BEC009CA1E4 /* TreeTableView */;
+			target = BC03605E20A53BEC009CA1E4 /* MYTreeTableView */;
 			targetProxy = BC03607820A53BEE009CA1E4 /* PBXContainerItemProxy */;
 		};
 		BC03608420A53BEE009CA1E4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BC03605E20A53BEC009CA1E4 /* TreeTableView */;
+			target = BC03605E20A53BEC009CA1E4 /* MYTreeTableView */;
 			targetProxy = BC03608320A53BEE009CA1E4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -407,6 +379,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -432,7 +405,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -465,6 +438,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -484,7 +458,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -497,8 +471,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T5Y5G8MDK4;
-				INFOPLIST_FILE = TreeTableView/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				INFOPLIST_FILE = MYTreeTableView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -515,8 +489,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T5Y5G8MDK4;
-				INFOPLIST_FILE = TreeTableView/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				INFOPLIST_FILE = MYTreeTableView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -542,7 +516,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mayan.TreeTableViewTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TreeTableView.app/TreeTableView";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MYTreeTableView.app/MYTreeTableView";
 			};
 			name = Debug;
 		};
@@ -561,7 +535,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mayan.TreeTableViewTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TreeTableView.app/TreeTableView";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MYTreeTableView.app/MYTreeTableView";
 			};
 			name = Release;
 		};
@@ -604,7 +578,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BC03605A20A53BEC009CA1E4 /* Build configuration list for PBXProject "TreeTableView" */ = {
+		BC03605A20A53BEC009CA1E4 /* Build configuration list for PBXProject "MYTreeTableView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BC03608920A53BEE009CA1E4 /* Debug */,
@@ -613,7 +587,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BC03608B20A53BEE009CA1E4 /* Build configuration list for PBXNativeTarget "TreeTableView" */ = {
+		BC03608B20A53BEE009CA1E4 /* Build configuration list for PBXNativeTarget "MYTreeTableView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BC03608C20A53BEE009CA1E4 /* Debug */,
@@ -622,7 +596,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BC03608E20A53BEE009CA1E4 /* Build configuration list for PBXNativeTarget "TreeTableViewTests" */ = {
+		BC03608E20A53BEE009CA1E4 /* Build configuration list for PBXNativeTarget "MYTreeTableViewTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BC03608F20A53BEE009CA1E4 /* Debug */,
@@ -631,7 +605,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BC03609120A53BEE009CA1E4 /* Build configuration list for PBXNativeTarget "TreeTableViewUITests" */ = {
+		BC03609120A53BEE009CA1E4 /* Build configuration list for PBXNativeTarget "MYTreeTableViewUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BC03609220A53BEE009CA1E4 /* Debug */,
