@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--MYTreeTableView-->
         <scene sceneID="Rtu-4i-WmZ">
             <objects>
                 <tableViewController id="cOV-d2-Wo3" customClass="ViewController" sceneMemberID="viewController">
@@ -21,7 +21,7 @@
                             <outlet property="delegate" destination="cOV-d2-Wo3" id="dQ8-hn-EEa"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="9D9-PP-AOW"/>
+                    <navigationItem key="navigationItem" title="MYTreeTableView" id="9D9-PP-AOW"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hQc-NM-i4x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
