@@ -16,6 +16,15 @@
 		BC52F8AC263275AB006A17F0 /* ExampleOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC52F8AB263275AB006A17F0 /* ExampleOneViewController.m */; };
 		BC52F8B0263275E0006A17F0 /* ExampleTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC52F8AF263275E0006A17F0 /* ExampleTwoViewController.m */; };
 		BC52F8B4263275EE006A17F0 /* ExampleThreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC52F8B3263275EE006A17F0 /* ExampleThreeViewController.m */; };
+		BC52F8DC2632A00F006A17F0 /* MYTreeItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BC52F8D12632A00F006A17F0 /* MYTreeItem.m */; };
+		BC52F8DD2632A00F006A17F0 /* MYTreeTableViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = BC52F8D32632A00F006A17F0 /* MYTreeTableViewLayout.m */; };
+		BC52F8DE2632A00F006A17F0 /* MYTreeTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC52F8D52632A00F006A17F0 /* MYTreeTableView.m */; };
+		BC52F8DF2632A00F006A17F0 /* MYTreeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC52F8D62632A00F006A17F0 /* MYTreeTableViewCell.m */; };
+		BC52F8E02632A00F006A17F0 /* MYTreeTableManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC52F8D82632A00F006A17F0 /* MYTreeTableManager.m */; };
+		BC52F8E12632A00F006A17F0 /* MYTreeTableView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC52F8DA2632A00F006A17F0 /* MYTreeTableView.bundle */; };
+		BC52F8E52632A086006A17F0 /* DataService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC52F8E42632A086006A17F0 /* DataService.m */; };
+		BC52F8EA2632A1D4006A17F0 /* ExampleThreeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC52F8E92632A1D4006A17F0 /* ExampleThreeViewCell.m */; };
+		BC52F8EE2632A405006A17F0 /* cityResource.json in Resources */ = {isa = PBXBuildFile; fileRef = BC52F8ED2632A405006A17F0 /* cityResource.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +44,22 @@
 		BC52F8AF263275E0006A17F0 /* ExampleTwoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExampleTwoViewController.m; sourceTree = "<group>"; };
 		BC52F8B2263275EE006A17F0 /* ExampleThreeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleThreeViewController.h; sourceTree = "<group>"; };
 		BC52F8B3263275EE006A17F0 /* ExampleThreeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExampleThreeViewController.m; sourceTree = "<group>"; };
+		BC52F8D12632A00F006A17F0 /* MYTreeItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYTreeItem.m; sourceTree = "<group>"; };
+		BC52F8D22632A00F006A17F0 /* MYTreeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYTreeTableViewCell.h; sourceTree = "<group>"; };
+		BC52F8D32632A00F006A17F0 /* MYTreeTableViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYTreeTableViewLayout.m; sourceTree = "<group>"; };
+		BC52F8D42632A00F006A17F0 /* MYTreeTableManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYTreeTableManager.h; sourceTree = "<group>"; };
+		BC52F8D52632A00F006A17F0 /* MYTreeTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYTreeTableView.m; sourceTree = "<group>"; };
+		BC52F8D62632A00F006A17F0 /* MYTreeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYTreeTableViewCell.m; sourceTree = "<group>"; };
+		BC52F8D72632A00F006A17F0 /* MYTreeItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYTreeItem.h; sourceTree = "<group>"; };
+		BC52F8D82632A00F006A17F0 /* MYTreeTableManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYTreeTableManager.m; sourceTree = "<group>"; };
+		BC52F8D92632A00F006A17F0 /* MYTreeTableViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYTreeTableViewLayout.h; sourceTree = "<group>"; };
+		BC52F8DA2632A00F006A17F0 /* MYTreeTableView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MYTreeTableView.bundle; sourceTree = "<group>"; };
+		BC52F8DB2632A00F006A17F0 /* MYTreeTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYTreeTableView.h; sourceTree = "<group>"; };
+		BC52F8E32632A086006A17F0 /* DataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataService.h; sourceTree = "<group>"; };
+		BC52F8E42632A086006A17F0 /* DataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataService.m; sourceTree = "<group>"; };
+		BC52F8E82632A1D4006A17F0 /* ExampleThreeViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleThreeViewCell.h; sourceTree = "<group>"; };
+		BC52F8E92632A1D4006A17F0 /* ExampleThreeViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExampleThreeViewCell.m; sourceTree = "<group>"; };
+		BC52F8ED2632A405006A17F0 /* cityResource.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cityResource.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +92,7 @@
 		BC52F87B26326D2D006A17F0 /* MYTreeTableView */ = {
 			isa = PBXGroup;
 			children = (
+				BC52F8D02632A00F006A17F0 /* MYTreeTableView */,
 				BC52F8A72632740F006A17F0 /* Example1 */,
 				BC52F8A62632740F006A17F0 /* Example2 */,
 				BC52F8A82632740F006A17F0 /* Example3 */,
@@ -74,11 +100,14 @@
 				BC52F87D26326D2D006A17F0 /* AppDelegate.m */,
 				BC52F88226326D2D006A17F0 /* ViewController.h */,
 				BC52F88326326D2D006A17F0 /* ViewController.m */,
-				BC52F88526326D2D006A17F0 /* Main.storyboard */,
+				BC52F8E32632A086006A17F0 /* DataService.h */,
+				BC52F8E42632A086006A17F0 /* DataService.m */,
 				BC52F88826326D30006A17F0 /* Assets.xcassets */,
+				BC52F88526326D2D006A17F0 /* Main.storyboard */,
 				BC52F88A26326D30006A17F0 /* LaunchScreen.storyboard */,
-				BC52F88D26326D30006A17F0 /* Info.plist */,
 				BC52F88E26326D30006A17F0 /* main.m */,
+				BC52F88D26326D30006A17F0 /* Info.plist */,
+				BC52F8EC2632A405006A17F0 /* Resource */,
 			);
 			path = MYTreeTableView;
 			sourceTree = "<group>";
@@ -106,8 +135,36 @@
 			children = (
 				BC52F8B2263275EE006A17F0 /* ExampleThreeViewController.h */,
 				BC52F8B3263275EE006A17F0 /* ExampleThreeViewController.m */,
+				BC52F8E82632A1D4006A17F0 /* ExampleThreeViewCell.h */,
+				BC52F8E92632A1D4006A17F0 /* ExampleThreeViewCell.m */,
 			);
 			path = Example3;
+			sourceTree = "<group>";
+		};
+		BC52F8D02632A00F006A17F0 /* MYTreeTableView */ = {
+			isa = PBXGroup;
+			children = (
+				BC52F8D72632A00F006A17F0 /* MYTreeItem.h */,
+				BC52F8D12632A00F006A17F0 /* MYTreeItem.m */,
+				BC52F8D42632A00F006A17F0 /* MYTreeTableManager.h */,
+				BC52F8D82632A00F006A17F0 /* MYTreeTableManager.m */,
+				BC52F8DA2632A00F006A17F0 /* MYTreeTableView.bundle */,
+				BC52F8DB2632A00F006A17F0 /* MYTreeTableView.h */,
+				BC52F8D52632A00F006A17F0 /* MYTreeTableView.m */,
+				BC52F8D22632A00F006A17F0 /* MYTreeTableViewCell.h */,
+				BC52F8D62632A00F006A17F0 /* MYTreeTableViewCell.m */,
+				BC52F8D92632A00F006A17F0 /* MYTreeTableViewLayout.h */,
+				BC52F8D32632A00F006A17F0 /* MYTreeTableViewLayout.m */,
+			);
+			path = MYTreeTableView;
+			sourceTree = "<group>";
+		};
+		BC52F8EC2632A405006A17F0 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				BC52F8ED2632A405006A17F0 /* cityResource.json */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,6 +226,8 @@
 				BC52F88C26326D30006A17F0 /* LaunchScreen.storyboard in Resources */,
 				BC52F88926326D30006A17F0 /* Assets.xcassets in Resources */,
 				BC52F88726326D2D006A17F0 /* Main.storyboard in Resources */,
+				BC52F8E12632A00F006A17F0 /* MYTreeTableView.bundle in Resources */,
+				BC52F8EE2632A405006A17F0 /* cityResource.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,10 +239,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC52F8B4263275EE006A17F0 /* ExampleThreeViewController.m in Sources */,
+				BC52F8DF2632A00F006A17F0 /* MYTreeTableViewCell.m in Sources */,
+				BC52F8DD2632A00F006A17F0 /* MYTreeTableViewLayout.m in Sources */,
+				BC52F8E52632A086006A17F0 /* DataService.m in Sources */,
 				BC52F88426326D2D006A17F0 /* ViewController.m in Sources */,
 				BC52F87E26326D2D006A17F0 /* AppDelegate.m in Sources */,
+				BC52F8DC2632A00F006A17F0 /* MYTreeItem.m in Sources */,
+				BC52F8EA2632A1D4006A17F0 /* ExampleThreeViewCell.m in Sources */,
+				BC52F8DE2632A00F006A17F0 /* MYTreeTableView.m in Sources */,
 				BC52F8B0263275E0006A17F0 /* ExampleTwoViewController.m in Sources */,
 				BC52F8AC263275AB006A17F0 /* ExampleOneViewController.m in Sources */,
+				BC52F8E02632A00F006A17F0 /* MYTreeTableManager.m in Sources */,
 				BC52F88F26326D30006A17F0 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -6,8 +6,12 @@
 //
 
 #import "ExampleOneViewController.h"
+#import "MYTreeTableView.h"
+#import "DataService.h"
 
 @interface ExampleOneViewController ()
+
+@property (nonatomic, strong) MYTreeTableView *tableView;
 
 @end
 
@@ -17,7 +21,19 @@
     [super viewDidLoad];
     
     self.title = @"Example 1";
-    self.view.backgroundColor = UIColor.whiteColor;
+    
+    // 1. 初始化 MYTreeTableView
+    self.tableView = [[MYTreeTableView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:self.tableView];
+    
+    // 2. 请求数据并刷新 MYTreeTableView 列表
+    [self requestData];
+}
+
+- (void)requestData {
+    [DataService requestDataWithCompleted:^(NSSet<MYTreeItem *> *treeItems) {
+        [self.tableView reloadDataWithTreeItems:treeItems];
+    }];
 }
 
 @end
