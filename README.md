@@ -1,11 +1,6 @@
 # TreeTableView
 
 >
-> 2021-04-23 更新日志
-> 时隔 2 年半，重新设计
->
-
->
 > 2018-09-27 更新日志 
 >
 > 之前几个月断断续续的优化了部分内容，但是变动不是很大。这几天综合了项目的新需求和 issues 的反馈，整体做了大改动，修改了数据调用方式，优化了部分代码，并且增加了一些新功能：
@@ -29,3 +24,10 @@
 - 单选 / 多选
 - 一键勾选 / 取消勾选
 - 搜索框查询并展示
+
+![DemoImage](https://github.com/mayan29/TreeTableView/blob/master/DemoImage.gif)
+
+城市列表数据为 3000 多个 item，实测页面丝滑无卡顿（感谢 @modood 提供的城市数据 [https://github.com/modood/Administrative-divisions-of-China](https://github.com/modood/Administrative-divisions-of-China)）
+
+![DemoImage2](https://github.com/mayan29/TreeTableView/blob/master/DemoImage2.gif)
+
